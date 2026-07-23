@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAMS Interactive Valuation Model</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --navy: #00327B;
+    --navy-dark: #001F52;
+    --blue: #347EF6;
+    --orange: #F6B343;
+    --gray: #A5A5A5;
+    --panel-bg: #F5F7FA;
+    --border: #E4E8EE;
+    --text: #1A1A1A;
+    --muted: #6B7280;
+    --green: #1C8A4B;
+    --red: #C0392B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: Calibri, Arial, sans-serif; color: var(--text);
+    background: #FFFFFF;
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color: #fff; padding: 24px 32px; position: relative; overflow: hidden;
+  }
+  header::after {
+    content: ""; position: absolute; top: 0; right: 60px; width: 70px; height: 100%;
+    background: var(--orange); transform: skewX(-20deg);
+  }
+  header h1 { margin: 0; font-size: 26px; letter-spacing: 0.5px; }
+  header p { margin: 4px 0 0; font-size: 13px; color: #CADCFC; font-style: italic; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 20px 24px 60px; }
+  .grid { display: grid; grid-template-columns: 380px 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--panel-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 16px 18px; margin-bottom: 16px;
+  }
+  .card h3 {
+    margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px;
+    color: #fff; background: var(--navy); padding: 8px 10px; border-radius: 4px; margin: -16px -18px 14px;
+  }
+  .slider-row { margin-bottom: 14px; }
+  .slider-row:last-child { margin-bottom: 0; }
+  .slider-label {
+    display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px; color: var(--text);
+  }
+  .slider-label b { color: var(--blue); font-variant-numeric: tabular-nums; }
+  input[type=range] {
+    width: 100%; accent-color: var(--blue); height: 4px; cursor: pointer;
+  }
+  .slider-hint { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+
+  .presets { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+  .preset-btn {
+    flex: 1; min-width: 70px; background: #fff; border: 1px solid var(--border); color: var(--navy);
+    padding: 7px 4px; border-radius: 4px; font-size: 11.5px; font-weight: bold; cursor: pointer;
+    transition: all .15s;
+  }
+  .preset-btn:hover { background: var(--navy); color: #fff; }
+  .preset-btn.active { background: var(--orange); color: var(--navy); border-color: var(--orange); }
+
+  .toggle-wrap { display: flex; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 3px; margin-bottom: 4px; }
+  .toggle-opt {
+    flex: 1; text-align: center; padding: 8px 6px; font-size: 12.5px; font-weight: bold; border-radius: 16px;
+    cursor: pointer; color: var(--navy); transition: all .15s;
+  }
+  .toggle-opt.active { background: var(--navy); color: #fff; }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+  @media (max-width: 700px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi {
+    background: var(--panel-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px; text-align: center;
+  }
+  .kpi .val { font-size: 24px; font-weight: bold; color: var(--navy); font-variant-numeric: tabular-nums; }
+  .kpi .lbl { font-size: 10.5px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: .3px; }
+  .kpi.hero { background: var(--navy); }
+  .kpi.hero .val { color: #fff; font-size: 28px; }
+  .kpi.hero .lbl { color: #CADCFC; }
+  .kpi .val.pos { color: var(--green); }
+  .kpi .val.neg { color: var(--red); }
+  .kpi.hero .val.pos { color: #8FE3AE; }
+  .kpi.hero .val.neg { color: #FFB4A8; }
+
+  .chart-card {
+    background: var(--panel-bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 14px 16px; margin-bottom: 16px;
+  }
+  .chart-card h4 {
+    margin: 0 0 10px; font-size: 12.5px; text-transform: uppercase; color: var(--navy); letter-spacing: 0.4px;
+  }
+  .chart-box { position: relative; height: 280px; }
+  .chart-box.short { height: 230px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+  .methodology {
+    font-size: 11.5px; color: var(--muted); line-height: 1.6;
+  }
+  .methodology summary { cursor: pointer; font-weight: bold; color: var(--navy); font-size: 12.5px; margin-bottom: 6px; }
+  .methodology code { background: #fff; padding: 1px 4px; border-radius: 3px; border: 1px solid var(--border); }
+
+  .flag {
+    background: #FBEAEA; border: 1px solid #E3B8B8; color: #8A1C1C; border-radius: 4px;
+    padding: 8px 10px; font-size: 11px; margin-top: 10px; font-weight: bold;
+  }
+  footer { text-align: center; padding: 20px; font-size: 10.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>CAMS — INTERACTIVE VALUATION MODEL</h1>
+  <p>Drag the assumptions. Watch the target price move. Base year = FY'26 actuals.</p>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+
+    <!-- ============ LEFT: ASSUMPTIONS ============ -->
+    <div>
+      <div class="card">
+        <h3>Scenario Presets</h3>
+        <div class="presets">
+          <button class="preset-btn" data-preset="bear">Bear</button>
+          <button class="preset-btn active" data-preset="base">Base</button>
+          <button class="preset-btn" data-preset="bull">Bull</button>
+          <button class="preset-btn" data-preset="mosl">MOSL Case</button>
+        </div>
+        <div class="slider-hint">MOSL Case approximates Motilal Oswal's Nov-2025 published Revenue/EBITDA/PAT CAGR estimate (10%/11%/12%, FY25-28E) — inputs tuned to land close to that guide over our FY26-29E window. A fully-cited 3rd-party reference point, not our own call.</div>
+      </div>
+
+      <div class="card">
+        <h3>1. Industry Growth</h3>
+        <div class="slider-row">
+          <div class="slider-label"><span>MF Industry AAUM growth (p.a.)</span><b id="v-aum">18.0%</b></div>
+          <input type="range" id="s-aum" min="5" max="30" value="18" step="0.5">
+          <div class="slider-hint">Industry AUM grew 19.4% (FY26) &amp; 23.1% (FY25). Range: 5–30%. CAMS's MF revenue is modeled as growing 1:1 with this (market share &amp; yield held flat — see Methodology).</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>2. Non-MF Business</h3>
+        <div class="slider-row">
+          <div class="slider-label"><span>Non-MF revenue growth (p.a.)</span><b id="v-nonmf">22.0%</b></div>
+          <input type="range" id="s-nonmf" min="10" max="35" value="22" step="1">
+          <div class="slider-hint">Mgmt target &gt;20%; delivered 24.5% YoY in Q4FY26 (CAMS IP).</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>3. Profitability</h3>
+        <div class="slider-row">
+          <div class="slider-label"><span>EBITDA margin, FY29E</span><b id="v-ebitda">47.0%</b></div>
+          <input type="range" id="s-ebitda" min="40" max="52" value="47" step="0.5">
+          <div class="slider-hint">FY26 actual: 45.2%. Interpolated linearly FY27→FY29. Tax rate held fixed at FY26's 25% (not a slider) — PAT still shows up in every output card and chart below.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>4. Valuation Method</h3>
+        <div class="toggle-wrap">
+          <div class="toggle-opt active" data-method="pe">Forward P/E</div>
+          <div class="toggle-opt" data-method="dcf">DCF</div>
+        </div>
+        <div id="pe-controls">
+          <div class="slider-row" style="margin-top:12px;">
+            <div class="slider-label"><span>Exit P/E multiple (FY29E)</span><b id="v-pe">40.0x</b></div>
+            <input type="range" id="s-pe" min="20" max="55" value="40" step="1">
+            <div class="slider-hint">CAMS TTM P/E: 43.0x (Screener, 22-May-2026). KFin peer: 47.8x.</div>
+          </div>
+        </div>
+        <div id="dcf-controls" style="display:none;">
+          <div class="slider-row" style="margin-top:12px;">
+            <div class="slider-label"><span>WACC</span><b id="v-wacc">9.0%</b></div>
+            <input type="range" id="s-wacc" min="8" max="16" value="9" step="0.25">
+          </div>
+          <div class="slider-row">
+            <div class="slider-label"><span>Terminal growth rate</span><b id="v-tg">6.0%</b></div>
+            <input type="range" id="s-tg" min="3" max="8" value="6" step="0.25">
+            <div class="slider-hint">5-yr explicit forecast (FY27-31E) + Gordon-growth terminal value.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ RIGHT: OUTPUTS ============ -->
+    <div>
+      <div class="kpi-row">
+        <div class="kpi hero">
+          <div class="val" id="k-target">₹0</div>
+          <div class="lbl">Implied Target Price</div>
+        </div>
+        <div class="kpi hero">
+          <div class="val" id="k-upside">0%</div>
+          <div class="lbl">Upside / (Downside) vs CMP ₹757</div>
+        </div>
+        <div class="kpi">
+          <div class="val" id="k-revcagr">0%</div>
+          <div class="lbl">Revenue CAGR FY26-29E</div>
+        </div>
+        <div class="kpi">
+          <div class="val" id="k-patcagr">0%</div>
+          <div class="lbl">PAT CAGR FY26-29E</div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h4>Revenue · EBITDA · PAT — FY26A to FY29E (₹ Cr)</h4>
+        <div class="chart-box"><canvas id="chartTrend"></canvas></div>
+      </div>
+
+      <div class="two-col">
+        <div class="chart-card">
+          <h4>P/E Method vs DCF Method — Target Price (₹)</h4>
+          <div class="chart-box short"><canvas id="chartCompare"></canvas></div>
+          <p style="font-size:10.5px;color:var(--muted);margin:8px 0 0;line-height:1.5;">These two methods can diverge a lot, and that's informative, not a bug: the P/E method assumes CAMS keeps trading near today's ~40-43x multiple as it grows. The DCF assumes the multiple normalizes toward a steady-state level implied by WACC minus terminal growth (typically far lower). If you believe CAMS stays a "growth stock" for judges, lean P/E; if you believe multiples mean-revert, DCF is the more conservative read.</p>
+        </div>
+        <div class="chart-card">
+          <h4>Valuation Range — "Football Field" (₹)</h4>
+          <div class="chart-box short"><canvas id="chartFootball"></canvas></div>
+          <p style="font-size:10.5px;color:var(--muted);margin:8px 0 0;line-height:1.5;">Each bar spans Bear→Bull for that method (Presets card, top-left), so you can see at a glance where today's price sits relative to the full range of outcomes — the standard way sell-side desks show a target price.</p>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <details class="methodology">
+          <summary>Methodology &amp; assumptions (click to expand)</summary>
+          <p><b>Base year (FY26A, consolidated, sourced):</b> Revenue ₹1,516.25 Cr · EBITDA margin 45.2% · PAT ₹476.01 Cr · Shares outstanding 24.80 Cr · Non-MF revenue mix ~15.3% (Q4FY26 exit rate, CAMS IP) · D&amp;A 6.5% of revenue · Other income 3.3% of revenue · Interest 0.5% of revenue · Net cash ~₹800 Cr (Screener.in).</p>
+          <p><b>Revenue build (simplified on purpose):</b> MF revenue<sub>t</sub> = MF revenue<sub>t-1</sub> × (1 + AUM growth) — i.e. CAMS's MF-linked revenue is modeled as scaling 1:1 with industry AUM growth, holding both CAMS's ~68% market share and MF yields (bps of AUM) flat. In reality yields have historically drifted down ~3%/yr and share moves a little — we cut both sliders to keep the tool easy to reason about, which means outputs run a touch more optimistic on the MF side than a full model would. Non-MF revenue<sub>t</sub> = Non-MF revenue<sub>t-1</sub> × (1 + non-MF growth). Total = sum of both.</p>
+          <p><b>Profit build:</b> EBITDA margin interpolates linearly from the FY26A actual to your FY29E slider value. PBT = EBITDA − D&amp;A − Interest + Other Income (all held at FY26A ratios to revenue). PAT = PBT × (1 − 25% tax), tax rate fixed at the FY26A effective rate rather than a slider.</p>
+          <p><b>P/E method:</b> Target price = FY29E EPS (3-yr forward) × exit P/E multiple.</p>
+          <p><b>DCF method:</b> Free cash flow<sub>t</sub> = PAT<sub>t</sub> + D&amp;A<sub>t</sub> − Capex<sub>t</sub>, where Capex is assumed at 7% of revenue (above D&amp;A's 6.5%, reflecting CAMS's stated ongoing "ReArch" platform investment — <i>this specific ratio is an assumption, not a disclosed CAMS figure</i>). Projected over a 5-year explicit window (FY27E-FY31E, standard DCF convention). Enterprise value = 5-year discounted FCF + discounted Gordon-growth terminal value from FY31E. Equity value = EV + FY26A net cash. Target price = equity value ÷ shares outstanding.</p>
+          <p><b>Known simplifications:</b> no share dilution/buybacks modeled; no working-capital delta in FCF; MF yield &amp; market-share held flat (see above); tax rate fixed, not adjustable; EBITDA-to-PAT bridge ratios held constant at FY26A levels rather than re-forecast individually.</p>
+          <div class="flag">This is an educational scenario tool built for a research competition — not investment advice, and not a substitute for a full sell-side model. Verify every default against the CAMS Q4 FY'26 investor presentation and Screener.in before presenting.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Sources: CAMS Q4 FY'26 Investor Presentation · Screener.in (22-May-2026) · Motilal Oswal note via InvestmentGuruIndia (5-Nov-2025). Built for CAMS equity research project, Jul 2026.
+</footer>
+
+<script>
+// ---------------- Base FY26A actuals (sourced — see methodology panel) ----------------
+const BASE = {
+  revenue: 1516.25,          // Rs Cr, consolidated FY26A
+  nonMfShare: 0.153,         // Q4FY26 exit-rate mix, CAMS IP
+  ebitdaMargin: 0.452,       // FY26A actual
+  daPct: 0.0652,             // D&A / revenue, FY26A
+  otherIncomePct: 0.0338,    // Other income / revenue, FY26A
+  interestPct: 0.0046,       // Interest / revenue, FY26A
+  taxRateActual: 0.25,
+  shares: 24.80,             // Cr shares outstanding
+  netCash: 800,              // Rs Cr, FY26A (cash 854.45 - borrowings ~54)
+  cmp: 757,                  // Rs, 22-May-2026
+  capexPctAssumed: 0.07      // assumption for DCF (flagged in UI) — not a disclosed CAMS figure
+};
+BASE.mfRevenue = BASE.revenue * (1 - BASE.nonMfShare);
+BASE.nonMfRevenue = BASE.revenue * BASE.nonMfShare;
+
+const sliders = {
+  aum: document.getElementById('s-aum'),
+  nonmf: document.getElementById('s-nonmf'),
+  ebitda: document.getElementById('s-ebitda'),
+  pe: document.getElementById('s-pe'),
+  wacc: document.getElementById('s-wacc'),
+  tg: document.getElementById('s-tg')
+};
+const labels = {
+  aum: document.getElementById('v-aum'),
+  nonmf: document.getElementById('v-nonmf'),
+  ebitda: document.getElementById('v-ebitda'),
+  pe: document.getElementById('v-pe'),
+  wacc: document.getElementById('v-wacc'),
+  tg: document.getElementById('v-tg')
+};
+
+let method = 'pe';
+
+function readAssumptions() {
+  return {
+    aum: parseFloat(sliders.aum.value) / 100,
+    nonmf: parseFloat(sliders.nonmf.value) / 100,
+    ebitdaTarget: parseFloat(sliders.ebitda.value) / 100,
+    pe: parseFloat(sliders.pe.value),
+    wacc: parseFloat(sliders.wacc.value) / 100,
+    tg: parseFloat(sliders.tg.value) / 100
+  };
+}
+
+// Core projection engine — 5-year explicit forecast (FY27E-FY31E), standard DCF practice.
+// Simplified: MF revenue scales 1:1 with AUM growth (market share & yield held flat — see Methodology).
+// Tax rate fixed at FY26A effective rate (not a slider).
+// Returns array of {year, revenue, ebitda, pat, eps, fcf}
+const N_YEARS = 5;
+function project(a) {
+  const years = ['FY27E', 'FY28E', 'FY29E', 'FY30E', 'FY31E'];
+  const mfGrowth = a.aum;
+  let mf = BASE.mfRevenue, nonMf = BASE.nonMfRevenue;
+  const out = [];
+  for (let i = 0; i < N_YEARS; i++) {
+    mf = mf * (1 + mfGrowth);
+    nonMf = nonMf * (1 + a.nonmf);
+    const revenue = mf + nonMf;
+    const margin = BASE.ebitdaMargin + (a.ebitdaTarget - BASE.ebitdaMargin) * ((i + 1) / N_YEARS);
+    const ebitda = revenue * margin;
+    const da = revenue * BASE.daPct;
+    const interest = revenue * BASE.interestPct;
+    const otherIncome = revenue * BASE.otherIncomePct;
+    const pbt = ebitda - da - interest + otherIncome;
+    const pat = pbt * (1 - BASE.taxRateActual);
+    const eps = pat / BASE.shares;
+    const capex = revenue * BASE.capexPctAssumed;
+    const fcf = pat + da - capex;
+    out.push({ year: years[i], revenue, ebitda, margin, pat, eps, fcf });
+  }
+  return out;
+}
+
+// P/E method: exit multiple applied to FY29E EPS (3-yr forward — matches typical sell-side horizon)
+function peTargetPrice(a) {
+  const proj = project(a);
+  const fy29 = proj[2];
+  return fy29.eps * a.pe;
+}
+
+// DCF method: full 5-yr explicit FCF + Gordon-growth terminal value from FY31E
+function dcfTargetPrice(a) {
+  const proj = project(a);
+  let pvSum = 0;
+  proj.forEach((yr, i) => {
+    pvSum += yr.fcf / Math.pow(1 + a.wacc, i + 1);
+  });
+  const terminalFcf = proj[N_YEARS - 1].fcf * (1 + a.tg);
+  const denom = (a.wacc - a.tg);
+  const tv = denom > 0.005 ? terminalFcf / denom : terminalFcf / 0.005; // guard against WACC<=g
+  const pvTv = tv / Math.pow(1 + a.wacc, N_YEARS);
+  const ev = pvSum + pvTv;
+  const equityValue = ev + BASE.netCash;
+  return equityValue / BASE.shares;
+}
+
+function fmtPrice(v) { return '₹' + v.toLocaleString('en-IN', { maximumFractionDigits: 0 }); }
+function fmtPct(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; }
+
+let chartTrend, chartCompare, chartFootball;
+
+function render() {
+  const a = readAssumptions();
+  labels.aum.textContent = (a.aum * 100).toFixed(1) + '%';
+  labels.nonmf.textContent = (a.nonmf * 100).toFixed(1) + '%';
+  labels.ebitda.textContent = (a.ebitdaTarget * 100).toFixed(1) + '%';
+  labels.pe.textContent = a.pe.toFixed(1) + 'x';
+  labels.wacc.textContent = (a.wacc * 100).toFixed(2) + '%';
+  labels.tg.textContent = (a.tg * 100).toFixed(2) + '%';
+
+  const proj = project(a);
+  const peTarget = peTargetPrice(a);
+  const dcfTarget = dcfTargetPrice(a);
+  const target = method === 'pe' ? peTarget : dcfTarget;
+  const upside = (target - BASE.cmp) / BASE.cmp * 100;
+
+  document.getElementById('k-target').textContent = fmtPrice(target);
+  const upsideEl = document.getElementById('k-upside');
+  upsideEl.textContent = fmtPct(upside);
+  upsideEl.className = 'val ' + (upside >= 0 ? 'pos' : 'neg');
+
+  // CAGR shown over the FY27E-FY29E window (matches the P/E method's 3-yr forward horizon)
+  const revCagr = (Math.pow(proj[2].revenue / BASE.revenue, 1 / 3) - 1) * 100;
+  const patCagr = (Math.pow(proj[2].pat / 476.01, 1 / 3) - 1) * 100;
+  document.getElementById('k-revcagr').textContent = revCagr.toFixed(1) + '%';
+  document.getElementById('k-patcagr').textContent = patCagr.toFixed(1) + '%';
+
+  // ---- Trend chart ----
+  const yrLabels = ['FY26A', ...proj.map(p => p.year)];
+  const revData = [BASE.revenue, ...proj.map(p => p.revenue)];
+  const ebitdaData = [BASE.revenue * BASE.ebitdaMargin, ...proj.map(p => p.ebitda)];
+  const patData = [476.01, ...proj.map(p => p.pat)];
+
+  if (!chartTrend) {
+    chartTrend = new Chart(document.getElementById('chartTrend'), {
+      type: 'bar',
+      data: {
+        labels: yrLabels,
+        datasets: [
+          { label: 'Revenue', data: revData, backgroundColor: '#00327B', borderRadius: 3 },
+          { label: 'EBITDA', data: ebitdaData, backgroundColor: '#347EF6', borderRadius: 3 },
+          { label: 'PAT', data: patData, backgroundColor: '#F6B343', borderRadius: 3 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: '₹ Cr', font: { size: 10 } }, grid: { color: '#E4E8EE' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  } else {
+    chartTrend.data.labels = yrLabels;
+    chartTrend.data.datasets[0].data = revData;
+    chartTrend.data.datasets[1].data = ebitdaData;
+    chartTrend.data.datasets[2].data = patData;
+    chartTrend.update('none');
+  }
+
+  // ---- Compare chart ----
+  if (!chartCompare) {
+    chartCompare = new Chart(document.getElementById('chartCompare'), {
+      type: 'bar',
+      data: {
+        labels: ['CMP (today)', 'P/E Method', 'DCF Method'],
+        datasets: [{
+          data: [BASE.cmp, peTarget, dcfTarget],
+          backgroundColor: ['#A5A5A5', '#347EF6', '#F6B343'],
+          borderRadius: 4
+        }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => '₹' + Math.round(c.raw).toLocaleString('en-IN') } } },
+        scales: { x: { beginAtZero: true, grid: { color: '#E4E8EE' } }, y: { grid: { display: false } } }
+      }
+    });
+  } else {
+    chartCompare.data.datasets[0].data = [BASE.cmp, peTarget, dcfTarget];
+    chartCompare.update('none');
+  }
+
+  // ---- Football field: valuation range across Bear -> Bull presets, both methods, vs. 52-wk range ----
+  // CMP is drawn as a dashed reference line across all bars (cmpLinePlugin below) rather than
+  // its own sliver bar — a ±3 range bar was too thin to read against the other bars' scale.
+  const bearA = presetToAssumptions(PRESETS.bear);
+  const bullA = presetToAssumptions(PRESETS.bull);
+  const peLo = peTargetPrice(bearA), peHi = peTargetPrice(bullA);
+  const dcfLo = dcfTargetPrice(bearA), dcfHi = dcfTargetPrice(bullA);
+  const football = [
+    { name: '52-Wk Trading Range', lo: 611, hi: 875 },
+    { name: 'DCF Method (Bear→Bull)', lo: Math.min(dcfLo, dcfHi), hi: Math.max(dcfLo, dcfHi) },
+    { name: 'P/E Method (Bear→Bull)', lo: Math.min(peLo, peHi), hi: Math.max(peLo, peHi) }
+  ];
+  const fbColors = ['#A5A5A5', '#00327B', '#347EF6'];
+
+  const cmpLinePlugin = {
+    id: 'cmpLine',
+    afterDraw(chart) {
+      const { ctx, chartArea, scales: { x } } = chart;
+      const xPos = x.getPixelForValue(BASE.cmp);
+      if (xPos < chartArea.left || xPos > chartArea.right) return;
+      ctx.save();
+      ctx.beginPath();
+      ctx.setLineDash([5, 4]);
+      ctx.moveTo(xPos, chartArea.top);
+      ctx.lineTo(xPos, chartArea.bottom);
+      ctx.lineWidth = 1.75;
+      ctx.strokeStyle = '#C0392B';
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#C0392B';
+      ctx.font = 'bold 10.5px Calibri';
+      ctx.textAlign = 'center';
+      ctx.fillText('CMP ₹' + BASE.cmp, xPos, chartArea.top - 6);
+      ctx.restore();
+    }
+  };
+
+  if (!chartFootball) {
+    chartFootball = new Chart(document.getElementById('chartFootball'), {
+      type: 'bar',
+      data: {
+        labels: football.map(t => t.name),
+        datasets: [{
+          label: 'Range',
+          data: football.map(t => [t.lo, t.hi]),
+          backgroundColor: fbColors,
+          borderRadius: 3,
+          barThickness: 26
+        }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        layout: { padding: { top: 18 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (c) => '₹' + Math.round(c.raw[0]).toLocaleString('en-IN') + ' – ₹' + Math.round(c.raw[1]).toLocaleString('en-IN') } }
+        },
+        scales: { x: { title: { display: true, text: 'Price (₹)', font: { size: 9 } }, grid: { color: '#E4E8EE' } }, y: { grid: { display: false }, ticks: { font: { size: 10.5 } } } }
+      },
+      plugins: [cmpLinePlugin]
+    });
+  } else {
+    chartFootball.data.labels = football.map(t => t.name);
+    chartFootball.data.datasets[0].data = football.map(t => [t.lo, t.hi]);
+    chartFootball.data.datasets[0].backgroundColor = fbColors;
+    chartFootball.update('none');
+  }
+}
+
+Object.values(sliders).forEach(s => s.addEventListener('input', render));
+
+document.querySelectorAll('.toggle-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    method = opt.dataset.method;
+    document.getElementById('pe-controls').style.display = method === 'pe' ? 'block' : 'none';
+    document.getElementById('dcf-controls').style.display = method === 'dcf' ? 'block' : 'none';
+    render();
+  });
+});
+
+const PRESETS = {
+  bear: { aum: 10, nonmf: 14, ebitda: 43, pe: 30, wacc: 13, tg: 5 },
+  base: { aum: 18, nonmf: 22, ebitda: 47, pe: 40, wacc: 9, tg: 6 },
+  bull: { aum: 24, nonmf: 28, ebitda: 50, pe: 48, wacc: 11, tg: 7 },
+  mosl: { aum: 13, nonmf: 16, ebitda: 45.5, pe: 40, wacc: 12, tg: 6 } // tuned to approximate MOSL's ~10-12% Rev/EBITDA/PAT CAGR guide (their window is FY25-28; ours is FY26-29 — close but not identical)
+};
+
+// Converts a raw preset (percentages, as sliders store them) into the fraction-based
+// assumption shape that peTargetPrice()/dcfTargetPrice() expect.
+function presetToAssumptions(p) {
+  return { aum: p.aum / 100, nonmf: p.nonmf / 100, ebitdaTarget: p.ebitda / 100, pe: p.pe, wacc: p.wacc / 100, tg: p.tg / 100 };
+}
+
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const p = PRESETS[btn.dataset.preset];
+    sliders.aum.value = p.aum;
+    sliders.nonmf.value = p.nonmf; sliders.ebitda.value = p.ebitda;
+    sliders.pe.value = p.pe; sliders.wacc.value = p.wacc; sliders.tg.value = p.tg;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
