@@ -54,10 +54,9 @@
   .card.red>h3{background:var(--red)}
   .g2u{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}
   .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media(max-width:980px){.g2,.g2u,.g3{grid-template-columns:1fr}}
+  @media(max-width:980px){.g2,.g2u{grid-template-columns:1fr}}
 
-  .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:14px}
+  .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-bottom:8px}
   @media(max-width:1100px){.stats{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
   .stat{background:#fff;border:1px solid var(--border);border-radius:6px;padding:11px 8px;text-align:center}
@@ -79,38 +78,27 @@
   .drvlab b{color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}
   input[type=range]{width:100%;accent-color:var(--blue);height:4px;cursor:pointer;margin:2px 0}
   .drvhint{font-size:10px;color:var(--muted);line-height:1.45;margin-top:1px}
-  .toggles{display:flex;background:#fff;border:1px solid var(--border);border-radius:20px;padding:3px;gap:2px}
-  .tg{flex:1;text-align:center;padding:8px 5px;font-size:12.5px;font-weight:bold;border-radius:16px;cursor:pointer;color:var(--navy);transition:.15s;user-select:none}
-  .tg.on{background:var(--navy);color:#fff}
-  .tg[data-scenario=bear].on{background:var(--red)}
-  .tg[data-scenario=bull].on{background:var(--green)}
   .drvgroup{border-top:1px dashed var(--border);margin-top:13px;padding-top:12px}
+  .drvgroup:first-of-type{border-top:none;margin-top:0;padding-top:0}
   .drvgroup>.gt{font-size:9.5px;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:10px}
-  .badge{display:block;background:#fff;border:1px solid var(--border);border-radius:4px;padding:7px 10px;font-size:10.5px;color:var(--muted);margin-top:11px;line-height:1.6}
+  .badge{display:block;background:#fff;border:1px solid var(--border);border-radius:4px;padding:8px 11px;font-size:10.5px;color:var(--muted);margin-top:13px;line-height:1.7}
   .badge b{color:var(--navy);font-variant-numeric:tabular-nums}
-  .stressbtn{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);border-radius:5px;padding:9px 11px;cursor:pointer;margin-top:11px;user-select:none;transition:.15s}
-  .stressbtn:hover{border-color:var(--red)}
-  .stressbtn.on{background:#FBEAEA;border-color:var(--red)}
-  .sw{flex:0 0 auto;width:34px;height:18px;border-radius:9px;background:var(--gray);position:relative;transition:.18s}
-  .sw::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.18s}
-  .stressbtn.on .sw{background:var(--red)}
-  .stressbtn.on .sw::after{left:18px}
-  .stressbtn .st{font-size:11.5px;font-weight:bold;color:var(--navy)}
-  .stressbtn.on .st{color:var(--red)}
-  .stressbtn .sh{font-size:10px;color:var(--muted);display:block;font-weight:normal;margin-top:1px;line-height:1.4}
+  .fixed{display:block;background:#EAF1FB;border:1px solid #C6D9F5;border-radius:4px;padding:8px 11px;font-size:10px;color:var(--navy);margin-top:9px;line-height:1.6}
+  .fixed b{font-variant-numeric:tabular-nums}
   .reset{background:none;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:10px;padding:5px 10px;cursor:pointer;font-family:inherit;margin-top:10px}
   .reset:hover{border-color:var(--navy);color:var(--navy)}
 
   table.t{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed}
-  table.t th,table.t td{padding:6px 7px;text-align:right;border-bottom:1px solid var(--border);overflow-wrap:break-word}
-  table.t th:first-child,table.t td:first-child{text-align:left;width:31%}
+  table.t th,table.t td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--border);overflow-wrap:break-word}
+  table.t th:first-child,table.t td:first-child{text-align:left;width:38%}
   table.t th{color:#fff;background:var(--navy);font-size:9.5px;text-transform:uppercase;letter-spacing:.3px}
-  table.t td.bl{font-weight:bold;background:#FDF0DA}
-  table.t th.bl{background:var(--orange);color:var(--navy-dk)}
   table.t tr.sec2 td{font-weight:bold;background:#E4E8EE;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;color:var(--navy)}
-  table.t th.act{box-shadow:inset 0 0 0 2px var(--orange)}
-  table.t td.act{background:#FFF6E5}
-  table.t td.dn{color:var(--red);font-weight:bold}
+  table.t tr.out td{background:#FDF0DA;font-weight:bold}
+  table.t tr.out td:first-child{font-weight:bold;color:var(--navy)}
+  table.t td.big{font-size:13.5px;color:var(--navy)}
+  table.t td.dn{color:var(--red)}
+  table.t td.up{color:var(--green)}
+  table.t td.sub{color:var(--muted);font-weight:normal}
 
   table.sens{width:100%;border-collapse:collapse;font-size:11px;text-align:center;table-layout:fixed}
   table.sens th,table.sens td{padding:7px 3px;border:1px solid #fff}
@@ -119,7 +107,6 @@
   table.sens td.cell{color:#14202E}
   table.sens td.here{outline:2.5px solid var(--navy-dk);outline-offset:-2px;font-weight:bold}
 
-  /* Flywheel */
   .fw{position:relative;width:100%;max-width:790px;margin:2px auto 0;aspect-ratio:760/476}
   .fw svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .arc{fill:none;stroke:var(--blue);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:10 8;animation:flow 1.1s linear infinite}
@@ -133,9 +120,7 @@
   .arclab{position:absolute;transform:translate(-50%,-50%);font-size:9.5px;color:var(--navy);background:#fff;border:1px solid var(--blue-lt);padding:2px 7px;border-radius:9px;white-space:nowrap;font-weight:bold}
   @media(max-width:760px){.fwn{font-size:9px;padding:6px 5px}.fwn small{display:none}.arclab{display:none}.fwhub .h1{font-size:13px}.fwhub .h2{display:none}}
 
-  .strengths{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .strengths.stack{grid-template-columns:1fr;gap:10px}
-  @media(max-width:980px){.strengths{grid-template-columns:1fr}}
+  .strengths{display:grid;grid-template-columns:1fr;gap:10px}
   .str{display:flex;gap:11px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:14px}
   .snum{flex:0 0 auto;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:bold;font-size:12px;display:flex;align-items:center;justify-content:center}
   .snum.b{background:var(--blue)} .snum.o{background:var(--orange);color:var(--navy-dk)} .snum.g{background:var(--gray)}
@@ -143,7 +128,7 @@
   .str .tx b{color:var(--navy);display:block;margin-bottom:3px;font-size:12.5px}
   .str .tx em{color:var(--navy);font-style:normal;font-weight:bold}
 
-  .risk{display:grid;grid-template-columns:1.05fr 1.5fr .85fr;gap:0;font-size:11.5px}
+  .risk{display:grid;grid-template-columns:1.05fr 1.5fr .8fr;gap:0;font-size:11.5px}
   .risk>div{padding:9px 11px;border-bottom:1px solid var(--border);line-height:1.5}
   .risk .rh2{background:var(--navy);color:#fff;font-size:9.5px;text-transform:uppercase;letter-spacing:.4px;font-weight:bold;border-bottom:none}
   .risk .rn{font-weight:bold;color:var(--navy);background:#fff}
@@ -151,12 +136,8 @@
   .risk .rq{background:#FBEAEA;color:#8A1C1C;font-weight:bold;text-align:center;font-variant-numeric:tabular-nums}
   @media(max-width:860px){.risk{grid-template-columns:1fr}.risk .rh2{display:none}.risk .rq{text-align:left}}
 
-  .method{font-size:11.5px;color:var(--muted);line-height:1.65}
-  .method summary{cursor:pointer;font-weight:bold;color:var(--navy);font-size:12.5px;margin-bottom:8px}
-  .method p{margin:0 0 10px}
-  .method b{color:var(--navy)}
-  .flag{background:#FBEAEA;border:1px solid #E3B8B8;color:#8A1C1C;border-radius:5px;padding:9px 12px;font-size:11px;margin-top:11px;line-height:1.55}
-  footer{text-align:center;padding:22px 16px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--border);margin-top:26px;line-height:1.7}
+  footer{text-align:center;padding:22px 16px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--border);margin-top:26px;line-height:1.75}
+  footer b{color:var(--navy)}
 </style>
 </head>
 <body>
@@ -172,15 +153,14 @@
   <a href="#company"><span class="step">01</span>The Company</a>
   <a href="#model"><span class="step">02</span>Dynamic Model</a>
   <a href="#risk"><span class="step">03</span>Risks &amp; Strengths</a>
-  <a href="#method"><span class="step">04</span>Methodology</a>
 </div></nav>
 
 <div class="kpibar"><div class="kin">
-  <div class="kbox live"><div class="v" id="k-tp">₹0</div><div class="l" id="k-tp-l">Target FY29E</div></div>
-  <div class="kbox live"><div class="v" id="k-up">0%</div><div class="l" id="k-up-l">Upside to CMP ₹760</div></div>
-  <div class="kbox live"><div class="v" id="k-irr">0%</div><div class="l" id="k-irr-l">3-yr IRR</div></div>
-  <div class="kbox"><div class="v" id="k-bl">₹0</div><div class="l">Blended target (25/50/25)</div></div>
-  <div class="kbox"><div class="v" id="k-rr">0.0x</div><div class="l">Reward : risk</div></div>
+  <div class="kbox live"><div class="v" id="k-tp">₹0</div><div class="l">Target price FY29E</div></div>
+  <div class="kbox live"><div class="v" id="k-up">0%</div><div class="l">Upside to CMP ₹760</div></div>
+  <div class="kbox live"><div class="v" id="k-irr">0%</div><div class="l">3-yr IRR (incl. dividends)</div></div>
+  <div class="kbox"><div class="v" id="k-rev">0%</div><div class="l">Revenue CAGR FY26–29</div></div>
+  <div class="kbox"><div class="v" id="k-eps">0%</div><div class="l">EPS CAGR FY26–29</div></div>
 </div></div>
 
 <div class="wrap">
@@ -206,18 +186,18 @@
         <path class="arc" d="M245.8,136.9 A168,168 0 0 1 325.3,79.2" marker-end="url(#ah)" style="animation-delay:.48s"></path>
       </svg>
       <div class="fwn n" style="left:50%;top:14.7%;width:24.5%">Household financialization<small>Savings shift from gold &amp; property into financial assets</small></div>
-      <div class="fwn b" style="left:71%;top:39.1%;width:22.1%">Industry AAUM ↑<small>~15% p.a. · ₹81 L Cr today</small></div>
-      <div class="fwn b" style="left:63%;top:78.6%;width:22.6%">Folios &amp; SIPs ↑<small>114 Mn folios · 67 Mn SIPs</small></div>
+      <div class="fwn b" style="left:71%;top:39.1%;width:22.1%">Industry AAUM ↑<small>₹81 L Cr industry AUM (Nov-25)</small></div>
+      <div class="fwn b" style="left:63%;top:78.6%;width:22.6%">Folios &amp; SIPs ↑<small>114.1 Mn folios · 67.0 Mn SIPs</small></div>
       <div class="fwn o" style="left:37%;top:78.6%;width:23.7%">CAMS earns bps on ~68%<small>Fee on assets <em>and</em> on transactions</small></div>
       <div class="fwn b" style="left:29%;top:39.1%;width:22.4%">Reinvest in platform<small>Unit cost ↓ → AMCs outsource more</small></div>
-      <div class="fwhub"><div class="h1">CAMS</div><div class="h2">45%+ EBITDA<br>36% ROE · zero debt</div></div>
+      <div class="fwhub"><div class="h1">CAMS</div><div class="h2">44.9% EBITDA<br>~36% ROE · zero debt</div></div>
       <div class="arclab" style="left:71%;top:11.5%">more inflows</div>
       <div class="arclab" style="left:76.5%;top:63.1%">more accounts</div>
       <div class="arclab" style="left:50%;top:92.4%">~68% flows through CAMS</div>
       <div class="arclab" style="left:23.5%;top:63.1%">costs ↓, margin ↑</div>
       <div class="arclab" style="left:29%;top:11.5%">cheaper access, wider reach</div>
     </div>
-    <p class="note" style="text-align:center;max-width:840px;margin:14px auto 0"><b>Read it as a loop, not a chain:</b> each turn makes the next turn cheaper. Because CAMS' incremental cost per folio is near-zero, the <em>same</em> AUM growth produces higher margins each cycle — which funds platform investment, which lowers the AMC's cost to outsource, which pulls more assets onto the platform. <b>Cost growth ~9% vs revenue growth ~13%</b> is this loop showing up in the P&amp;L. Source: CAMS Q4 FY'26 investor presentation.</p>
+    <p class="note" style="text-align:center;max-width:840px;margin:14px auto 0"><b>Read it as a loop, not a chain:</b> each turn makes the next turn cheaper. Because CAMS' incremental cost per folio is near-zero, the <em>same</em> AUM growth produces higher margins each cycle — which funds platform investment, which lowers the AMC's cost to outsource, which pulls more assets onto the platform. <b>Cost growth ~9% vs revenue growth ~13%</b> is this loop showing up in the P&amp;L.</p>
   </div>
 
   <div class="stats">
@@ -228,6 +208,7 @@
     <div class="stat"><div class="v">31</div><div class="l">MF RTA clients</div></div>
     <div class="stat"><div class="v">2.88 bps</div><div class="l">Blended revenue yield<br>on serviced AAUM</div></div>
   </div>
+  <p class="note" style="margin-bottom:0">Operating metrics as at Q4 FY26 (CAMS investor presentation). Revenue yield is FY26 total revenue ÷ average AUM serviced; the ₹55.1 L Cr figure above is period-end AUM, while the model below runs on <em>average</em> AUM (₹52.6 L Cr FY26) to match how the yield is calculated.</p>
 </section>
 
 <!-- ============ 02 DYNAMIC MODEL ============ -->
@@ -238,17 +219,17 @@
     <div>
       <div class="card">
         <h3>Assumptions</h3>
-        <div class="toggles" id="scen">
-          <div class="tg" data-scenario="bear">Bear</div>
-          <div class="tg on" data-scenario="base">Base</div>
-          <div class="tg" data-scenario="bull">Bull</div>
-        </div>
 
         <div class="drvgroup"><div class="gt">Growth</div>
           <div class="drv">
             <div class="drvlab"><span>Industry AAUM growth p.a.</span><b id="v-aum">15.0%</b></div>
             <input type="range" id="s-aum" min="0" max="26" value="15" step="0.5">
-            <div class="drvhint">Sell-side models 13.7%–16.5% for FY27–28E. 5-yr trailing was 24%.</div>
+            <div class="drvhint">Sell-side models 13.7% (FY27E) and 16.5% (FY28E). 5-yr trailing industry AUM CAGR was ~24%.</div>
+          </div>
+          <div class="drv">
+            <div class="drvlab"><span>Non-MF revenue growth p.a.</span><b id="v-nmf">18.0%</b></div>
+            <input type="range" id="s-nmf" min="0" max="40" value="18" step="1">
+            <div class="drvhint">Payments, KRA, Alternatives, CAMSRep and Think360 — ₹220 Cr in FY26 (14.5% of revenue), with no AUM-yield exposure.</div>
           </div>
         </div>
 
@@ -256,37 +237,29 @@
           <div class="drv">
             <div class="drvlab"><span>FY29E EBITDA margin</span><b id="v-mgn">47.0%</b></div>
             <input type="range" id="s-mgn" min="36" max="54" value="47" step="0.5">
-            <div class="drvhint">FY26 actual 44.9%, straight-lined to your exit margin. PAT margin = EBITDA margin − 13.9pp (the empirically stable gap).</div>
-          </div>
-          <div class="drv">
-            <div class="drvlab"><span>Exit P/E on FY29E EPS</span><b id="v-pe">36.0x</b></div>
-            <input type="range" id="s-pe" min="18" max="55" value="36" step="0.5">
-            <div class="drvhint">5-yr forward P/E band: <b>−1SD 29.7x · mean 38.2x · +1SD 46.7x</b>. Base 36x is a deliberate de-rate from today's 40x trailing.</div>
+            <div class="drvhint">FY26 actual 44.9%, straight-lined to your exit margin. PAT margin = EBITDA margin − 13.9pp (observed gap has ranged 13.1–14.0pp across FY23–FY28E).</div>
           </div>
           <div class="drv">
             <div class="drvlab"><span>Dividend payout ratio</span><b id="v-pay">45.0%</b></div>
             <input type="range" id="s-pay" min="0" max="90" value="45" step="1">
-            <div class="drvhint">FY26 actual was 66%. Defaults to the conservative 45% sell-side forward assumption.</div>
+            <div class="drvhint">FY26 actual payout was 66% (DPS ₹12.5). Defaults to the conservative 45% sell-side forward assumption.</div>
           </div>
         </div>
 
-        <div class="stressbtn" id="stress">
-          <div class="sw"></div>
-          <div><span class="st">Stress test: −30% equity drawdown in FY28</span><span class="sh">AAUM is market-linked. A bear market hits revenue directly and immediately — no growth assumption protects you from it.</span></div>
-        </div>
         <div class="badge" id="b-implied"></div>
-        <button class="reset" id="reset">↺ Reset all assumptions to house case</button>
+        <div class="fixed">Held constant across the model: <b>exit P/E 36.0x</b> on FY29E EPS — a deliberate de-rate from today's 40.2x trailing, and below the 5-yr forward mean of 38.2x (band: −1SD 29.7x · mean 38.2x · +1SD 46.7x). Also fixed: <b>MF RTA market share 68.0%</b> (flat) and <b>MF revenue yield −0.060 bps/yr</b> (observed run-rate ≈ −0.065 bps/yr across FY26–FY28E). All three are shocked in the risk table below; the multiple is flexed across the sensitivity grid.</div>
+        <button class="reset" id="reset">↺ Reset assumptions to house case</button>
       </div>
     </div>
 
     <div>
       <div class="chartcard">
-        <h4 id="buildTitle">Revenue build (₹ Cr)</h4>
+        <h4>Revenue build (₹ Cr)</h4>
         <div class="cbox tall"><canvas id="cBuild"></canvas></div>
-        <p class="note">FY23A–FY26A actuals; FY27E–FY29E on your <b id="buildScen">base</b>-case assumptions. MF revenue (navy) is <em>derived</em> from serviced AAUM × yield, not assumed. Non-MF (amber) compounds on its own driver.</p>
+        <p class="note">FY23A–FY26A actuals; FY27E–FY29E on your assumptions. MF revenue (navy) is <em>derived</em> from serviced AAUM × yield, not assumed; non-MF (amber) compounds on its own driver. <b>Note:</b> the MF / non-MF split for FY23A–FY25A is estimated — only the FY26 mix is disclosed by the company.</p>
       </div>
       <div class="chartcard">
-        <h4 id="marginTitle">Margin &amp; earnings trajectory</h4>
+        <h4>Margin &amp; earnings trajectory</h4>
         <div class="cbox sm"><canvas id="cMargin"></canvas></div>
         <p class="note">Bars = PAT (₹ Cr, left axis). Lines = EBITDA and PAT margin (%, right axis). <b>The whole equity story is the gap between revenue growth and PAT growth</b> — if the margin lines are flat, operating leverage isn't there and the multiple isn't earned.</p>
       </div>
@@ -294,23 +267,19 @@
   </div>
 
   <div class="chartcard">
-    <h4>Calculation engine — Bear / Base / Bull / Blended</h4>
+    <h4>Calculation engine — full build, year by year</h4>
     <div style="overflow-x:auto"><table class="t" id="engine"></table></div>
-    <p class="note">Highlighted column = the scenario you are currently viewing. Blended column = 25% Bear / 50% Base / 25% Bull. Every figure recomputes on each change.</p>
+    <p class="note">Every line recomputes on each slider move. FY26A is the actual base year; FY27E–FY29E are model output.</p>
   </div>
 
   <div class="chartcard">
-    <h4>Sensitivity — 3-year IRR across the two variables that matter most</h4>
-    <div class="toggles" id="sensmode" style="max-width:520px;margin-bottom:12px">
-      <div class="tg on" data-sens="pe">EPS CAGR × Exit P/E</div>
-      <div class="tg" data-sens="yield">AAUM growth × Yield change</div>
-    </div>
+    <h4>Sensitivity — 3-year IRR by EPS CAGR and exit P/E</h4>
     <div style="overflow-x:auto" id="sensWrap"></div>
     <p class="note" id="sensNote"></p>
   </div>
 </section>
 
-<!-- ============ 03 RISK ============ -->
+<!-- ============ 03 RISKS & STRENGTHS ============ -->
 <section class="sec" id="risk">
   <div class="sec-head"><span class="sec-num">03</span><h2>Risks &amp; Strengths</h2><span class="lens">what could go wrong · why it compounds</span></div>
 
@@ -318,94 +287,76 @@
     <div class="card red">
       <h3>Quantified risk → mitigant</h3>
       <div class="risk">
-        <div class="rh2">Risk</div><div class="rh2">Mitigant &amp; evidence</div><div class="rh2">Modelled impact</div>
+        <div class="rh2">Risk</div><div class="rh2">Mitigant &amp; evidence</div><div class="rh2">Impact on target</div>
 
         <div class="rn">Revenue-yield compression</div>
-        <div class="rm">Yield has fallen ~0.065 bps/yr — gradual repricing, not a cliff. Non-MF revenue (14.5%) carries no yield exposure and grows faster.</div>
+        <div class="rm">Yield has fallen ~0.065 bps/yr (2.88 → 2.75 across FY26–FY28E) — gradual repricing, not a cliff. Non-MF revenue (14.5% of the total) carries no yield exposure and grows faster.</div>
         <div class="rq" id="r-yield">—</div>
 
         <div class="rn">AUM is market-linked</div>
-        <div class="rm">~43% of AUM arrives via SIP, which is contractual and sticky. This is the risk with <em>no</em> operational mitigant — only the SIP mix softens it.</div>
+        <div class="rm">~43% of industry AUM arrives via SIP, which is contractual and keeps arriving through a drawdown. This is the risk with <em>no</em> operational mitigant — only the SIP mix softens it.</div>
         <div class="rq" id="r-draw">—</div>
 
         <div class="rn">Market-share loss to KFin</div>
-        <div class="rm">Zero large-AMC migrations in two decades. Switching means moving the entire investor record book under SEBI supervision.</div>
+        <div class="rm">A two-player market. Switching provider means migrating the entire investor record book, reconciliation history and regulatory reporting under SEBI supervision — an operational risk for the AMC, not a procurement decision.</div>
         <div class="rq" id="r-share">—</div>
 
         <div class="rn">Multiple de-rating</div>
-        <div class="rm">Base case already assumes a de-rate from 40x trailing to 36x exit. Downside case uses 28x — below the −1SD band of 29.7x.</div>
+        <div class="rm">The default 36x exit already de-rates from today's 40.2x trailing and sits below the 38.2x 5-yr mean. A fall to the −1SD level of 29.7x is the realistic bear.</div>
         <div class="rq" id="r-pe">—</div>
 
         <div class="rn">Client concentration</div>
-        <div class="rm">31 MF RTA clients, but assets skew to the top 6 AMCs. Loss of a single top-3 client is the tail risk; mitigated by contract tenure and migration cost.</div>
-        <div class="rq">~−8% rev per top-5 client</div>
+        <div class="rm">31 MF RTA clients, but assets skew heavily to the largest AMCs — the three biggest CAMS serves (SBI, ICICI Pru, HDFC) hold ~₹27.6 L Cr, roughly half the AUM it services.</div>
+        <div class="rq">~50% of serviced AUM<br>in top 3 clients</div>
       </div>
-      <p class="note">"Modelled impact" = live effect on the blended target price of the stated shock, holding every other assumption at your current setting.</p>
+      <p class="note"><b>Impact on target</b> = effect on the target price of the stated shock, holding every other assumption at your current setting: yield −0.06 bps/yr worse, a 30% equity-market drawdown in FY28, 0.75pp/yr of share loss, and a 6-turn de-rate respectively.</p>
     </div>
 
     <div class="card">
       <h3>Investment Strengths</h3>
-      <div class="strengths stack">
+      <div class="strengths">
         <div class="str"><div class="snum b">01</div><div class="tx"><b>Dominant and defensible core</b>~68% of industry AAUM and relationships with <em>6 of the top 10</em> AMCs by assets. Scale plus embedded record-keeping workflows make switching a multi-year operational risk for a client, not a procurement decision.</div></div>
         <div class="str"><div class="snum o">02</div><div class="tx"><b>Multiple growth adjacencies</b>Alternatives, payments, KYC, insurance repository and analytics extend the addressable market beyond MF RTA — several of them created by regulation rather than competed for.</div></div>
-        <div class="str"><div class="snum g">03</div><div class="tx"><b>Asset-light &amp; cash-generative</b>45–47% EBITDA margins, ~36% ROE, a <em>debt-free</em> balance sheet and ₹444 Cr free cash flow. FY26 dividend payout was <em>66%</em>; the model conservatively assumes 45% going forward.</div></div>
+        <div class="str"><div class="snum g">03</div><div class="tx"><b>Asset-light &amp; cash-generative</b>44.9% EBITDA margin, ~36% ROE, a <em>debt-free</em> balance sheet and ₹444 Cr free cash flow. FY26 dividend payout was <em>66%</em>; the model conservatively assumes 45% going forward.</div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 04 METHOD ============ -->
-<section class="sec" id="method">
-  <div class="sec-head"><span class="sec-num">04</span><h2>Methodology, Sources &amp; Known Limitations</h2><span class="lens">show your work</span></div>
-  <div class="chartcard">
-    <details class="method" open>
-      <summary>Full model construction (click to collapse)</summary>
-      <p><b>Base year (FY26A).</b> Revenue ₹1,516 Cr · EBITDA margin 44.9% · PAT margin 31.0% · EPS ₹18.90 · shares 24.80 Cr · CMP ₹760. Historical FY23A–FY25A revenue/EBITDA/PAT: ₹972/421/285 Cr, ₹1,136/505/351 Cr, ₹1,422/652/465 Cr.</p>
-      <p><b>The revenue identity.</b> MF revenue<sub>t</sub> = Industry AAUM<sub>t</sub> × CAMS share<sub>t</sub> × MF yield<sub>t</sub>. Non-MF revenue<sub>t</sub> = ₹212 Cr × (1 + non-MF growth)<sup>t</sup>. Total revenue = the sum. Calibration: industry AAUM FY26 = ₹77.4 lakh Cr at 68.0% share gives ₹52.6 lakh Cr serviced; at a 2.478 bps MF-only yield that produces ₹1,304 Cr of MF revenue plus ₹212 Cr non-MF = <b>₹1,516 Cr, matching the actual</b>. Run at house-case settings the model outputs FY27E–29E revenue of ₹1,714 / 1,937 / 2,188 Cr against the reference model's ₹1,713 / 1,936 / 2,188 Cr — a reconciliation within 0.2%. Market-share drift, yield change and non-MF growth are set per scenario (Bear/Base/Bull) rather than exposed as sliders; the values used are listed below.</p>
-      <p><b>Scenario settings.</b> Share drift: Bear −0.75 pp/yr · Base flat · Bull +0.30 pp/yr. MF yield change: Bear −0.110 · Base −0.060 · Bull −0.030 bps/yr (observed run-rate ≈ −0.065). Non-MF growth: Bear 8% · Base 18% · Bull 25%.</p>
-      <p><b>Margins and earnings.</b> EBITDA margin is straight-lined from the FY26 actual 44.9% to your FY29E exit margin. PAT margin = EBITDA margin − <b>13.9pp</b>, a gap that holds within ±0.4pp across every actual and estimate year available — so EBITDA is derived rather than independently assumed. PAT<sub>t</sub> = revenue<sub>t</sub> × PAT margin<sub>t</sub>; EPS<sub>t</sub> = PAT<sub>t</sub> ÷ 24.80 Cr shares; DPS<sub>t</sub> = EPS<sub>t</sub> × payout.</p>
-      <p><b>Target price and IRR.</b> Target = EPS<sub>FY29E</sub> × exit P/E. IRR solves −CMP + DPS<sub>27</sub>/(1+r) + DPS<sub>28</sub>/(1+r)² + (DPS<sub>29</sub> + target)/(1+r)³ = 0 by bisection — a total return including dividends, not a price-upside number.</p>
-      <p><b>Drawdown stress.</b> Applies a one-off multiplicative haircut to serviced AAUM in FY28 which then compounds forward from the reduced base — i.e. the market does not "catch up". Revenue, margins, EPS, dividends, target price and IRR all recompute through the same chain.</p>
-      <p><b>Blending.</b> A straight 25/50/25 probability weighting of the Bear/Base/Bull outputs (EPS, revenue, PAT, DPS, target price and IRR each weighted individually) — not a re-derivation from a separately blended cash-flow stream.</p>
-      <p><b>Known simplifications — stated so they can be challenged rather than discovered.</b> (1) No share dilution or buyback is modelled. (2) The EBITDA–PAT gap is held constant, so tax-rate and other-income changes are not modelled separately. (3) Non-MF revenue is a single blended block rather than seven separately-modelled businesses. (4) Market-share drift is linear, not competitively modelled. (5) The drawdown stress hits AAUM but leaves the cost base unchanged, which <em>understates</em> the margin damage in a real bear market.</p>
-      <div class="flag"><b>Disclosure.</b> Built as an educational scenario tool for an equity-research competition — not investment advice. Base-year figures and the FY27–28E reference estimates come from a dated third-party research note (05-May-2026) and the company's Q4 FY'26 investor presentation; verify against the originals before relying on any of it. Everything beyond the base year is this model's own scenario arithmetic, not a forecast.</div>
-    </details>
   </div>
 </section>
 </div>
 
 <footer>
   <b>CAMS — Dynamic Valuation Model</b><br>
-  Sources: CAMS Q4 FY'26 Investor Presentation · AMFI &amp; Crisil Intelligence · Screener.in (22-May-2026) · Third-party sell-side estimate dated 05-May-2026.<br>
-  Prepared July 2026. Educational use only — not investment advice.
+  <b>Base year (FY26A):</b> revenue ₹1,516 Cr · EBITDA margin 44.9% · PAT ₹470 Cr · EPS ₹18.90 · shares 24.80 Cr · CMP ₹760.
+  <b>Revenue identity:</b> MF revenue = average AUM serviced × revenue yield (bps); non-MF grows on its own rate. At default settings the model reproduces FY27E–FY29E revenue of ₹1,714 / 1,937 / 2,188 Cr.<br>
+  Sources: CAMS Q4 FY'26 Investor Presentation (operating metrics, revenue mix) · AMFI &amp; Crisil Intelligence (industry AUM, folios, SIP) · Screener.in, 22-May-2026 (ROE, FCF, peer multiples) · third-party sell-side estimate dated 05-May-2026 (FY27–28E AAUM, revenue, margins, EPS, P/E band). Historical MF / non-MF revenue split for FY23A–FY25A is estimated.<br>
+  Prepared July 2026. Educational scenario tool — not investment advice.
 </footer>
 
 <script>
 "use strict";
 /* ============================== CONSTANTS ============================== */
 const CMP = 760, EPS26 = 18.90, SHARES = 24.80, REV26 = 1516;
-const IND26 = 77.41, SHARE26 = 0.68, MFY26 = 2.478, NONMF26 = 212;
-const GAP = 0.139, EBITDA_M26 = 0.449;
-const W = { bear: 0.25, base: 0.50, bull: 0.25 };
-const DRAWDOWN = 0.30;
-const NAME = { bear:'Bear', base:'Base', bull:'Bull' };
+const IND26 = 77.41;      // industry average AAUM FY26, ₹ lakh crore (derived: serviced 52.64 ÷ 68% share)
+const SHARE26 = 0.68;     // CAMS MF RTA share of industry AAUM
+const NONMF26 = 220;      // ₹ Cr, non-MF revenue FY26 (14.5% of ₹1,516 Cr, per Q3 FY26 disclosed mix)
+const MFY26 = 2.4621;     // MF-only revenue yield, bps — calibrated so MF + non-MF = ₹1,516 Cr actual
+const SHARE_DRIFT = 0.00; // pp per year, held flat
+const YLD_DRIFT = -0.060; // bps per year, vs observed ≈ −0.065
+const EXIT_PE = 36;       // exit multiple on FY29E EPS (5-yr fwd band: −1SD 29.7 / mean 38.2 / +1SD 46.7)
+const GAP = 0.139;        // EBITDA margin − PAT margin (FY26: 44.9% − 31.0%)
+const EBITDA_M26 = 0.449;
+const DRAWDOWN = 0.30;    // used only to quantify the market-drawdown risk row
 
 const HIST = {
   yrs: ['FY23A','FY24A','FY25A','FY26A'],
-  rev: [972, 1136, 1422, 1516],
-  ebitda: [421, 505, 652, 681],
-  pat: [285, 351, 465, 470],
-  nonmf: [120, 148, 190, 212]
+  rev:    [972, 1136, 1422, 1516],
+  ebitda: [421,  505,  652,  681],
+  pat:    [285,  351,  465,  470],
+  nonmf:  [102,  136,  192,  220]   // FY23–25 split estimated; FY26 per disclosed mix
 };
 
-// share / yld / nmf are scenario-fixed (not exposed as sliders)
-const HOUSE = {
-  bear: { aum:10.0, share:-0.75, yld:-0.110, nmf: 8, mgn:43.0, pe:28, pay:48 },
-  base: { aum:15.0, share: 0.00, yld:-0.060, nmf:18, mgn:47.0, pe:36, pay:45 },
-  bull: { aum:17.0, share: 0.30, yld:-0.030, nmf:25, mgn:48.5, pe:45, pay:43 }
-};
-const state = JSON.parse(JSON.stringify(HOUSE));
-let active = 'base', stressOn = false, sensMode = 'pe';
+const HOUSE = { aum:15.0, nmf:18, mgn:47.0, pay:45 };
+const state = Object.assign({}, HOUSE);
 
 /* ============================== ENGINE ============================== */
 function solveIRR(dps, tp){
@@ -415,20 +366,22 @@ function solveIRR(dps, tp){
   for (let i=0;i<160;i++){ const m=(lo+hi)/2; if (f(lo)*f(m) > 0) lo=m; else hi=m; }
   return (lo+hi)/2;
 }
-function clampShare(v){ return Math.max(0.05, Math.min(0.95, v)); }
 
 function calc(s, stress){
-  const path = [], mfRev=[], nonMf=[], rev=[], eps=[], dps=[], pat=[], ebitda=[], patM=[], ebitdaM=[], yld=[];
+  const serviced=[], yld=[], mfRev=[], nonMf=[], rev=[], eps=[], dps=[],
+        pat=[], ebitda=[], patM=[], ebitdaM=[];
+  const shareDrift = s.share === undefined ? SHARE_DRIFT : s.share;
+  const yldDrift   = s.yld   === undefined ? YLD_DRIFT   : s.yld;
   for (let t=1;t<=3;t++){
     let ind = IND26 * Math.pow(1 + s.aum/100, t);
     if (stress && t >= 2) ind *= (1 - DRAWDOWN);
-    const sh = clampShare(SHARE26 + (s.share/100) * t);
-    const serviced = ind * sh;
-    path.push({ ind, share: sh, serviced });
+    const sh = Math.max(0.05, Math.min(0.95, SHARE26 + (shareDrift/100) * t));
+    const sv = ind * sh;
+    serviced.push(sv);
 
-    const y = Math.max(0.20, MFY26 + s.yld * t);
+    const y = Math.max(0.20, MFY26 + yldDrift * t);
     yld.push(y);
-    const mf = serviced * 100000 * (y/10000);
+    const mf = sv * 100000 * (y/10000);
     const nm = NONMF26 * Math.pow(1 + s.nmf/100, t);
     const r  = mf + nm;
     const em = EBITDA_M26 + (s.mgn/100 - EBITDA_M26) * (t/3);
@@ -438,22 +391,11 @@ function calc(s, stress){
     mfRev.push(mf); nonMf.push(nm); rev.push(r); ebitda.push(r*em);
     ebitdaM.push(em); patM.push(pm); pat.push(p); eps.push(e); dps.push(e * s.pay/100);
   }
-  const tp = eps[2] * s.pe;
-  return { path, yld, mfRev, nonMf, rev, ebitda, ebitdaM, patM, pat, eps, dps,
+  const tp = eps[2] * (s.pe === undefined ? EXIT_PE : s.pe);
+  return { serviced, yld, mfRev, nonMf, rev, ebitda, ebitdaM, patM, pat, eps, dps,
     cumDiv: dps[0]+dps[1]+dps[2], tp, irr: solveIRR(dps, tp),
     epsCagr: Math.pow(eps[2]/EPS26, 1/3) - 1,
     revCagr: Math.pow(rev[2]/REV26, 1/3) - 1 };
-}
-
-function blend(b, m, u){
-  const w = (x,y,z) => x*W.bear + y*W.base + z*W.bull;
-  const arr = k => [0,1,2].map(i => w(b[k][i], m[k][i], u[k][i]));
-  const rev = arr('rev'), pat = arr('pat'), ebitda = arr('ebitda'), eps = arr('eps'), dps = arr('dps');
-  return { rev, pat, ebitda, eps, dps, mfRev: arr('mfRev'), nonMf: arr('nonMf'),
-    patM: pat.map((p,i)=>p/rev[i]), ebitdaM: ebitda.map((e,i)=>e/rev[i]),
-    tp: w(b.tp,m.tp,u.tp), irr: w(b.irr,m.irr,u.irr),
-    cumDiv: dps[0]+dps[1]+dps[2],
-    epsCagr: Math.pow(eps[2]/EPS26,1/3)-1, revCagr: Math.pow(rev[2]/REV26,1/3)-1 };
 }
 
 /* ============================== FORMAT ============================== */
@@ -462,10 +404,11 @@ const pct  = (v,d=1) => (v>=0?'+':'') + (v*100).toFixed(d) + '%';
 const pct0 = (v,d=1) => (v*100).toFixed(d) + '%';
 const f2   = v => v.toFixed(2);
 const f1   = v => v.toFixed(1);
+const cr   = v => Math.round(v).toLocaleString('en-IN');
 
 /* ============================== DOM ============================== */
 const el = id => document.getElementById(id);
-const KEYS = ['aum','mgn','pe','pay'];
+const KEYS = ['aum','nmf','mgn','pay'];
 const sl = {}, lb = {};
 KEYS.forEach(k => { sl[k] = el('s-'+k); lb[k] = el('v-'+k); });
 let chBuild, chMargin;
@@ -479,45 +422,29 @@ function kpi(id, txt, cls){
 
 /* ============================== RENDER ============================== */
 function render(){
-  const a = state[active];
-  KEYS.forEach(k => { a[k] = parseFloat(sl[k].value); });
+  KEYS.forEach(k => { state[k] = parseFloat(sl[k].value); });
+  lb.aum.textContent = state.aum.toFixed(1) + '%';
+  lb.nmf.textContent = state.nmf.toFixed(0) + '%';
+  lb.mgn.textContent = state.mgn.toFixed(1) + '%';
+  lb.pay.textContent = state.pay.toFixed(0) + '%';
 
-  lb.aum.textContent = a.aum.toFixed(1) + '%';
-  lb.mgn.textContent = a.mgn.toFixed(1) + '%';
-  lb.pe.textContent  = a.pe.toFixed(1) + 'x';
-  lb.pay.textContent = a.pay.toFixed(0) + '%';
+  const S = calc(state, false);
 
-  const bear = calc(state.bear, stressOn), base = calc(state.base, stressOn), bull = calc(state.bull, stressOn);
-  const S = { bear, base, bull }[active];          // ← the live scenario the user is viewing
-  const bl = blend(bear, base, bull);
-  const nm = NAME[active];
-
-  /* ---- implied readout for the active scenario ---- */
-  el('b-implied').innerHTML =
-    `<b>${nm} case implies:</b> market share 68.0% → <b>${((SHARE26 + a.share/100*3)*100).toFixed(1)}%</b> · `
-    + `yield ${MFY26.toFixed(2)} → <b>${(MFY26 + a.yld*3).toFixed(2)} bps</b> · `
-    + `revenue CAGR <b>${pct0(S.revCagr)}</b> · EPS CAGR <b>${pct0(S.epsCagr)}</b>`
-    + (stressOn ? ` · <span style="color:var(--red);font-weight:bold">drawdown applied</span>` : '');
-
-  /* ---- KPIs: first three follow the ACTIVE scenario ---- */
+  /* ---- KPIs ---- */
   const up = S.tp / CMP - 1;
-  const dn = bear.tp / CMP - 1;
-  const rr = dn < 0 ? Math.abs((bl.tp/CMP - 1) / dn) : Infinity;
-  const tone = active === 'bear' ? 'neg' : active === 'bull' ? 'pos' : '';
-  kpi('k-tp',  rs(S.tp), tone);
-  kpi('k-up',  pct(up),  up >= 0 ? 'pos' : 'neg');
+  kpi('k-tp',  rs(S.tp),  up >= 0 ? '' : 'neg');
+  kpi('k-up',  pct(up),   up >= 0 ? 'pos' : 'neg');
   kpi('k-irr', pct(S.irr), S.irr >= 0 ? 'pos' : 'neg');
-  kpi('k-bl',  rs(bl.tp), 'amber');
-  kpi('k-rr',  isFinite(rr) ? rr.toFixed(1) + 'x' : 'n/a', isFinite(rr) && rr >= 1.5 ? 'pos' : 'amber');
-  el('k-tp-l').textContent  = nm + ' target FY29E';
-  el('k-up-l').textContent  = nm + ' upside to CMP ₹760';
-  el('k-irr-l').textContent = nm + ' 3-yr IRR';
+  kpi('k-rev', pct0(S.revCagr));
+  kpi('k-eps', pct0(S.epsCagr));
 
-  /* ---- charts follow the ACTIVE scenario ---- */
-  el('buildTitle').textContent  = `Revenue build — ${nm.toUpperCase()} case (₹ Cr)`;
-  el('marginTitle').textContent = `Margin & earnings trajectory — ${nm.toUpperCase()} case`;
-  el('buildScen').textContent   = nm.toLowerCase();
+  /* ---- implied readout ---- */
+  el('b-implied').innerHTML =
+    `<b>Your assumptions imply:</b> FY29E revenue <b>₹${cr(S.rev[2])} Cr</b> · FY29E EPS <b>₹${f2(S.eps[2])}</b> · `
+    + `non-MF rises to <b>${pct0(S.nonMf[2]/S.rev[2])}</b> of revenue · `
+    + `AUM serviced <b>₹${f1(S.serviced[2])} L Cr</b> · yield <b>${f2(S.yld[2])} bps</b>`;
 
+  /* ---- Revenue build chart ---- */
   const yrs = HIST.yrs.concat(['FY27E','FY28E','FY29E']);
   const mfSeries = HIST.rev.map((r,i) => r - HIST.nonmf[i]).concat(S.mfRev);
   const nmSeries = HIST.nonmf.concat(S.nonMf);
@@ -531,8 +458,8 @@ function render(){
       options:{ responsive:true, maintainAspectRatio:false, animation:{duration:300},
         plugins:{ legend:{position:'bottom',labels:{boxWidth:11,font:{size:10.5}}},
           tooltip:{callbacks:{
-            label: c => c.dataset.label + ': ₹' + Math.round(c.raw).toLocaleString('en-IN') + ' Cr',
-            footer: it => 'Total: ₹' + Math.round(it.reduce((s,i)=>s+i.raw,0)).toLocaleString('en-IN') + ' Cr' }} },
+            label: c => c.dataset.label + ': ₹' + cr(c.raw) + ' Cr',
+            footer: it => 'Total: ₹' + cr(it.reduce((s,i)=>s+i.raw,0)) + ' Cr' }} },
         scales:{ x:{stacked:true,grid:{display:false}},
                  y:{stacked:true,beginAtZero:true,title:{display:true,text:'₹ Cr',font:{size:10}},grid:{color:'#E4E8EE'}} } }
     });
@@ -542,15 +469,18 @@ function render(){
     chBuild.update();
   }
 
+  /* ---- Margin chart ---- */
   const patSeries  = HIST.pat.concat(S.pat);
   const ebmSeries  = HIST.ebitda.map((e,i)=>e/HIST.rev[i]*100).concat(S.ebitdaM.map(x=>x*100));
   const patmSeries = HIST.pat.map((p,i)=>p/HIST.rev[i]*100).concat(S.patM.map(x=>x*100));
   if (!chMargin){
     chMargin = new Chart(el('cMargin'), {
       data:{ labels:yrs, datasets:[
-        { type:'bar', label:'PAT (₹ Cr)', data:patSeries, backgroundColor:'#B9C9E8', borderRadius:3, yAxisID:'y' },
-        { type:'line', label:'EBITDA margin %', data:ebmSeries, borderColor:'#F6B343', backgroundColor:'#F6B343', tension:.3, yAxisID:'y1', pointRadius:2.5, borderWidth:2.5 },
-        { type:'line', label:'PAT margin %', data:patmSeries, borderColor:'#00327B', backgroundColor:'#00327B', tension:.3, yAxisID:'y1', pointRadius:2.5, borderWidth:2.5 }
+        // Chart.js draws sorted metasets in reverse, so a LOWER `order` renders on top.
+        // Bars get the highest order so both margin lines sit in front of them.
+        { type:'bar', label:'PAT (₹ Cr)', data:patSeries, backgroundColor:'#B9C9E8', borderRadius:3, yAxisID:'y', order:3 },
+        { type:'line', label:'EBITDA margin %', data:ebmSeries, borderColor:'#F6B343', backgroundColor:'#fff', tension:.3, yAxisID:'y1', pointRadius:3, pointBorderWidth:2, pointBackgroundColor:'#fff', borderWidth:3, order:1 },
+        { type:'line', label:'PAT margin %', data:patmSeries, borderColor:'#00327B', backgroundColor:'#fff', tension:.3, yAxisID:'y1', pointRadius:3, pointBorderWidth:2, pointBackgroundColor:'#fff', borderWidth:3, order:2 }
       ]},
       options:{ responsive:true, maintainAspectRatio:false, animation:{duration:300},
         plugins:{legend:{position:'bottom',labels:{boxWidth:11,font:{size:10}}}},
@@ -565,55 +495,56 @@ function render(){
     chMargin.update();
   }
 
-  /* ---- Engine table ---- */
-  const cc = k => active === k ? ' act' : '';
+  /* ---- Engine table: year by year ---- */
+  const A = { serviced: IND26*SHARE26, yld: 2.88, mf: REV26-NONMF26, nm: NONMF26, rev: REV26,
+              ebm: EBITDA_M26, ebitda: 681, patm: 0.310, pat: 470, eps: EPS26, dps: 12.50 };
   const rows = [
-    ['__s__','Revenue build (₹ Cr)'],
-    ['Serviced AAUM FY29E (₹ L Cr)', bear.path[2].serviced, base.path[2].serviced, bull.path[2].serviced, null, f1],
-    ['MF revenue yield FY29E (bps)', bear.yld[2], base.yld[2], bull.yld[2], null, f2],
-    ['Revenue FY29E', bear.rev[2], base.rev[2], bull.rev[2], null, v=>Math.round(v).toLocaleString('en-IN')],
-    ['Revenue CAGR FY26–29', bear.revCagr, base.revCagr, bull.revCagr, null, v=>pct0(v)],
-    ['__s__','Earnings'],
-    ['EPS FY27E', bear.eps[0], base.eps[0], bull.eps[0], bl.eps[0], f2],
-    ['EPS FY28E', bear.eps[1], base.eps[1], bull.eps[1], bl.eps[1], f2],
-    ['EPS FY29E (terminal)', bear.eps[2], base.eps[2], bull.eps[2], bl.eps[2], f2],
-    ['EPS CAGR FY26–29', bear.epsCagr, base.epsCagr, bull.epsCagr, bl.epsCagr, v=>pct0(v)],
-    ['__s__','Valuation'],
-    ['Exit P/E applied', state.bear.pe, state.base.pe, state.bull.pe, null, v=>f1(v)+'x'],
-    ['Target price FY29E', bear.tp, base.tp, bull.tp, bl.tp, rs],
-    ['Upside / downside to CMP', bear.tp/CMP-1, base.tp/CMP-1, bull.tp/CMP-1, bl.tp/CMP-1, v=>pct(v)],
-    ['__s__','Cash returns & total return'],
-    ['Cumulative DPS FY27–29', bear.cumDiv, base.cumDiv, bull.cumDiv, bl.cumDiv, f2],
-    ['3-yr IRR (incl. dividends)', bear.irr, base.irr, bull.irr, bl.irr, v=>pct(v)]
+    ['__s__','Revenue build'],
+    ['Average AUM serviced (₹ L Cr)', A.serviced, S.serviced[0], S.serviced[1], S.serviced[2], f1],
+    ['MF revenue yield (bps)',        A.yld,      S.yld[0],      S.yld[1],      S.yld[2],      f2],
+    ['MF revenue (₹ Cr)',             A.mf,       S.mfRev[0],    S.mfRev[1],    S.mfRev[2],    cr],
+    ['Non-MF revenue (₹ Cr)',         A.nm,       S.nonMf[0],    S.nonMf[1],    S.nonMf[2],    cr],
+    ['__t__','Total revenue (₹ Cr)',  A.rev,      S.rev[0],      S.rev[1],      S.rev[2],      cr],
+    ['__s__','Profitability'],
+    ['EBITDA margin',                 A.ebm,      S.ebitdaM[0],  S.ebitdaM[1],  S.ebitdaM[2],  v=>pct0(v)],
+    ['EBITDA (₹ Cr)',                 A.ebitda,   S.ebitda[0],   S.ebitda[1],   S.ebitda[2],   cr],
+    ['PAT margin',                    A.patm,     S.patM[0],     S.patM[1],     S.patM[2],     v=>pct0(v)],
+    ['__t__','PAT (₹ Cr)',            A.pat,      S.pat[0],      S.pat[1],      S.pat[2],      cr],
+    ['__s__','Per share'],
+    ['EPS (₹)',                       A.eps,      S.eps[0],      S.eps[1],      S.eps[2],      f2],
+    ['DPS (₹)',                       A.dps,      S.dps[0],      S.dps[1],      S.dps[2],      f2]
   ];
-  let h = `<tr><th>Line item</th><th class="${cc('bear').trim()}">Bear</th><th class="${cc('base').trim()}">Base</th><th class="${cc('bull').trim()}">Bull</th><th class="bl">Blended</th></tr>`;
+  let h = '<tr><th>Line item</th><th>FY26A</th><th>FY27E</th><th>FY28E</th><th>FY29E</th></tr>';
   rows.forEach(r => {
     if (r[0] === '__s__'){ h += `<tr class="sec2"><td colspan="5">${r[1]}</td></tr>`; return; }
-    const f = r[5];
-    const neg = v => (typeof v === 'number' && (r[0].indexOf('Upside') === 0 || r[0].indexOf('IRR') >= 0) && v < 0) ? ' dn' : '';
-    h += `<tr><td>${r[0]}</td>`
-       + `<td class="${(cc('bear')+neg(r[1])).trim()}">${f(r[1])}</td>`
-       + `<td class="${(cc('base')+neg(r[2])).trim()}">${f(r[2])}</td>`
-       + `<td class="${(cc('bull')+neg(r[3])).trim()}">${f(r[3])}</td>`
-       + `<td class="bl">${r[4] === null ? '—' : f(r[4])}</td></tr>`;
+    const tot = r[0] === '__t__';
+    const label = tot ? r[1] : r[0];
+    const [a,b,c,d] = tot ? [r[2],r[3],r[4],r[5]] : [r[1],r[2],r[3],r[4]];
+    const f = tot ? r[6] : r[5];
+    h += `<tr${tot?' class="out"':''}><td>${label}</td>`
+       + `<td class="sub">${f(a)}</td><td>${f(b)}</td><td>${f(c)}</td><td>${f(d)}</td></tr>`;
   });
+  h += '<tr class="sec2"><td colspan="5">Outcome</td></tr>'
+     + `<tr class="out"><td>Target price (FY29E EPS × ${f1(EXIT_PE)}x)</td><td colspan="4" class="big">${rs(S.tp)}</td></tr>`
+     + `<tr><td>Upside to CMP ₹760</td><td colspan="4" class="${up>=0?'up':'dn'}">${pct(up)}</td></tr>`
+     + `<tr><td>Cumulative DPS FY27–29 (₹)</td><td colspan="4">${f2(S.cumDiv)}</td></tr>`
+     + `<tr class="out"><td>3-yr IRR (incl. dividends)</td><td colspan="4" class="big ${S.irr>=0?'up':'dn'}">${pct(S.irr)}</td></tr>`
+     + `<tr><td>Revenue CAGR FY26–29</td><td colspan="4">${pct0(S.revCagr)}</td></tr>`
+     + `<tr><td>EPS CAGR FY26–29</td><td colspan="4">${pct0(S.epsCagr)}</td></tr>`;
   el('engine').innerHTML = h;
 
   renderSens(S);
 
-  /* ---- Live risk impacts ---- */
-  const shock = mut => {
-    const cl = o => JSON.parse(JSON.stringify(o));
-    const b2 = cl(state.bear), m2 = cl(state.base), u2 = cl(state.bull);
-    [b2,m2,u2].forEach(mut);
-    return blend(calc(b2,stressOn), calc(m2,stressOn), calc(u2,stressOn)).tp / bl.tp - 1;
+  /* ---- Risk impacts ---- */
+  const shock = (mut, stress) => {
+    const s2 = Object.assign({ share: SHARE_DRIFT, yld: YLD_DRIFT, pe: EXIT_PE }, state);
+    if (mut) mut(s2);
+    return calc(s2, !!stress).tp / S.tp - 1;
   };
   el('r-yield').textContent = pct(shock(o => { o.yld -= 0.06; }));
+  el('r-draw').textContent  = pct(shock(null, true));
   el('r-share').textContent = pct(shock(o => { o.share -= 0.75; }));
-  el('r-pe').textContent    = pct(shock(o => { o.pe = Math.max(10, o.pe - 6); }));
-  const drawTp   = blend(calc(state.bear,true),  calc(state.base,true),  calc(state.bull,true)).tp;
-  const noDrawTp = blend(calc(state.bear,false), calc(state.base,false), calc(state.bull,false)).tp;
-  el('r-draw').textContent = pct(drawTp/noDrawTp - 1);
+  el('r-pe').textContent    = pct(shock(o => { o.pe = EXIT_PE - 6; }));
 }
 
 /* ---------- Sensitivity ---------- */
@@ -625,65 +556,33 @@ function heat(v, lo, hi){
   return `rgb(${r},${g},${b})`;
 }
 function renderSens(S){
-  const a = state[active], nm = NAME[active];
-  let html = '', note = '';
-  if (sensMode === 'pe'){
-    const rowsV = [4,7,10,13,16,19,22], colsV = [26,30,34,38,42,46];
-    html = '<table class="sens"><tr><td class="rh">EPS CAGR ╲ Exit P/E</td>' + colsV.map(c=>`<th>${c}x</th>`).join('') + '</tr>';
-    rowsV.forEach(rv => {
-      html += `<tr><td class="rh">${rv}%</td>`;
-      colsV.forEach(cv => {
-        const e = [1,2,3].map(t => EPS26 * Math.pow(1+rv/100, t));
-        const d = e.map(x => x * a.pay/100);
-        const irr = solveIRR(d, e[2]*cv);
-        const here = Math.abs(rv/100 - S.epsCagr) < 0.015 && Math.abs(cv - a.pe) <= 2;
-        html += `<td class="cell${here?' here':''}" style="background:${heat(irr,-0.15,0.32)}">${(irr*100).toFixed(1)}%</td>`;
-      });
-      html += '</tr>';
+  const rowsV = [4,7,10,13,16,19,22], colsV = [26,30,34,38,42,46];
+  let html = '<table class="sens"><tr><td class="rh">EPS CAGR ╲ Exit P/E</td>' + colsV.map(c=>`<th>${c}x</th>`).join('') + '</tr>';
+  rowsV.forEach(rv => {
+    html += `<tr><td class="rh">${rv}%</td>`;
+    colsV.forEach(cv => {
+      const e = [1,2,3].map(t => EPS26 * Math.pow(1+rv/100, t));
+      const d = e.map(x => x * state.pay/100);
+      const irr = solveIRR(d, e[2]*cv);
+      const here = Math.abs(rv/100 - S.epsCagr) < 0.015 && Math.abs(cv - EXIT_PE) <= 2;
+      html += `<td class="cell${here?' here':''}" style="background:${heat(irr,-0.15,0.32)}">${(irr*100).toFixed(1)}%</td>`;
     });
-    html += '</table>';
-    note = `Rows = FY26–29 EPS CAGR · Columns = exit P/E on FY29E EPS · payout held at your live ${a.pay}% · CMP ₹760. Outlined cell ≈ your current <b>${nm}</b> case. <b>Read the diagonal:</b> a 4pp swing in EPS CAGR is worth roughly the same as 8 turns of multiple.`;
-  } else {
-    const rowsV = [6,9,12,15,18,21,24], colsV = [-0.20,-0.15,-0.10,-0.06,-0.02,0.02];
-    html = '<table class="sens"><tr><td class="rh">AAUM growth ╲ yield Δ</td>' + colsV.map(c=>`<th>${c>=0?'+':'−'}${Math.abs(c).toFixed(2)}</th>`).join('') + '</tr>';
-    rowsV.forEach(rv => {
-      html += `<tr><td class="rh">${rv}%</td>`;
-      colsV.forEach(cv => {
-        const r = calc(Object.assign({}, a, { aum: rv, yld: cv }), stressOn);
-        const here = Math.abs(rv - a.aum) < 1.6 && Math.abs(cv - a.yld) < 0.021;
-        html += `<td class="cell${here?' here':''}" style="background:${heat(r.irr,-0.15,0.32)}">${(r.irr*100).toFixed(1)}%</td>`;
-      });
-      html += '</tr>';
-    });
-    html += '</table>';
-    note = `Rows = industry AAUM growth p.a. · Columns = MF revenue-yield change in bps/yr · all other <b>${nm}</b>-case assumptions held live. This is the actual trade-off the business faces: volume against price. Note the top-left corner — decent AUM growth with hard yield compression still produces a poor return, which is exactly the bear thesis.`;
-  }
+    html += '</tr>';
+  });
+  html += '</table>';
   el('sensWrap').innerHTML = html;
-  el('sensNote').innerHTML = note;
+  el('sensNote').innerHTML =
+    `Rows = FY26–29 EPS CAGR · Columns = exit P/E on FY29E EPS · payout held at your live ${state.pay}% · CMP ₹760. `
+    + `The outlined cell is closest to the model's current position (EPS CAGR <b>${pct0(S.epsCagr)}</b>, exit P/E <b>${f1(EXIT_PE)}x</b> — the multiple is fixed in the model, so this grid is where you flex it). `
+    + `<b>Read the diagonal:</b> a 4pp swing in EPS CAGR is worth roughly the same as 8 turns of multiple — growth matters more here than the exit-multiple debate.`;
 }
 
 /* ============================== WIRING ============================== */
-function pushSliders(){
-  const a = state[active];
-  KEYS.forEach(k => { sl[k].value = a[k]; });
-}
 KEYS.forEach(k => sl[k].addEventListener('input', render));
-
-document.querySelectorAll('#scen .tg').forEach(t => t.addEventListener('click', () => {
-  document.querySelectorAll('#scen .tg').forEach(o => o.classList.remove('on'));
-  t.classList.add('on'); active = t.dataset.scenario; pushSliders(); render();
-}));
-document.querySelectorAll('#sensmode .tg').forEach(t => t.addEventListener('click', () => {
-  document.querySelectorAll('#sensmode .tg').forEach(o => o.classList.remove('on'));
-  t.classList.add('on'); sensMode = t.dataset.sens; render();
-}));
-el('stress').addEventListener('click', function(){
-  stressOn = !stressOn; this.classList.toggle('on', stressOn); render();
-});
 el('reset').addEventListener('click', () => {
-  Object.keys(HOUSE).forEach(k => Object.assign(state[k], HOUSE[k]));
-  stressOn = false; el('stress').classList.remove('on');
-  pushSliders(); render();
+  Object.assign(state, HOUSE);
+  KEYS.forEach(k => { sl[k].value = state[k]; });
+  render();
 });
 
 const secs = [...document.querySelectorAll('section.sec')];
@@ -696,7 +595,7 @@ const spy = () => {
 };
 window.addEventListener('scroll', spy, { passive:true });
 
-pushSliders();
+KEYS.forEach(k => { sl[k].value = state[k]; });
 render();
 spy();
 </script>
