@@ -120,6 +120,30 @@
   .arclab{position:absolute;transform:translate(-50%,-50%);font-size:9.5px;color:var(--navy);background:#fff;border:1px solid var(--blue-lt);padding:2px 7px;border-radius:9px;white-space:nowrap;font-weight:bold}
   @media(max-width:760px){.fwn{font-size:9px;padding:6px 5px}.fwn small{display:none}.arclab{display:none}.fwhub .h1{font-size:13px}.fwhub .h2{display:none}}
 
+  /* ---- Revenue by type of fee ---- */
+  .feegrid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
+  @media(max-width:980px){.feegrid{grid-template-columns:1fr}}
+  .feebar{display:flex;height:52px;border-radius:5px;overflow:hidden;margin-bottom:12px}
+  .feebar div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:15px;font-variant-numeric:tabular-nums}
+  .feelist{background:#fff;border:1px solid var(--border);border-radius:6px}
+  .feerow{display:grid;grid-template-columns:14px 1fr auto;gap:10px;align-items:start;padding:11px 13px;border-bottom:1px solid var(--border)}
+  .feerow:last-child{border-bottom:none}
+  .swatch{width:11px;height:11px;border-radius:2px;margin-top:3px}
+  .feerow .fn{font-size:12.5px;font-weight:bold;color:var(--navy);line-height:1.3}
+  .feerow .fd{font-size:10.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+  .feerow .fp{font-size:14px;font-weight:bold;color:var(--navy);font-variant-numeric:tabular-nums;padding-left:6px}
+  .feenote{font-size:11.5px;color:var(--muted);line-height:1.65}
+  .feenote p{margin:0 0 10px}
+  .feenote p:last-of-type{margin-bottom:0}
+  .feenote b{color:var(--navy)}
+  .bigstat{background:var(--navy);color:#fff;border-radius:6px;padding:14px 16px;margin-bottom:12px}
+  .bigstat .bv{font-size:30px;font-weight:bold;line-height:1;font-variant-numeric:tabular-nums}
+  .bigstat .bl{font-size:10.5px;color:#CADCFC;margin-top:6px;line-height:1.5}
+  .twostat{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+  .twostat div{background:#fff;border:1px solid var(--border);border-radius:6px;padding:10px 8px;text-align:center}
+  .twostat b{display:block;font-size:17px;color:var(--navy);font-variant-numeric:tabular-nums}
+  .twostat span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.2px;margin-top:3px;line-height:1.35}
+
   .strengths{display:grid;grid-template-columns:1fr;gap:10px}
   .str{display:flex;gap:11px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:14px}
   .snum{flex:0 0 auto;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:bold;font-size:12px;display:flex;align-items:center;justify-content:center}
@@ -200,6 +224,50 @@
     <p class="note" style="text-align:center;max-width:840px;margin:14px auto 0"><b>Read it as a loop, not a chain:</b> each turn makes the next turn cheaper. Because CAMS' incremental cost per folio is near-zero, the <em>same</em> AUM growth produces higher margins each cycle — which funds platform investment, which lowers the AMC's cost to outsource, which pulls more assets onto the platform. <b>Cost growth ~9% vs revenue growth ~13%</b> is this loop showing up in the P&amp;L.</p>
   </div>
 
+  <div class="card">
+    <h3>How CAMS earns — revenue by type of fee (FY 2025-26)</h3>
+    <div class="feegrid">
+      <div>
+        <div class="feebar">
+          <div style="flex:0 0 74%;background:var(--navy)">74%</div>
+          <div style="flex:0 0 12%;background:var(--blue)">12%</div>
+          <div style="flex:0 0 14%;background:var(--orange);color:var(--navy-dk)">14%</div>
+        </div>
+        <div class="feelist">
+          <div class="feerow">
+            <span class="swatch" style="background:var(--navy)"></span>
+            <div><div class="fn">Mutual fund, asset-based</div><div class="fd">A rate on assets under service. Grows with markets and with net inflows — and falls with both.</div></div>
+            <span class="fp">74%</span>
+          </div>
+          <div class="feerow">
+            <span class="swatch" style="background:var(--blue)"></span>
+            <div><div class="fn">Mutual fund, non-asset-based</div><div class="fd">Per-transaction and fixed fees. Tracks activity, not asset values.</div></div>
+            <span class="fp">12%</span>
+          </div>
+          <div class="feerow">
+            <span class="swatch" style="background:var(--orange)"></span>
+            <div><div class="fn">Everything that is not a mutual fund</div><div class="fd">Insurance repository, payments, KYC, account aggregation, NPS, alternatives, analytics.</div></div>
+            <span class="fp">14%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feenote">
+        <div class="bigstat">
+          <div class="bv">₹2.40</div>
+          <div class="bl">Of every <b style="color:#fff">₹10,000</b> of mutual fund assets CAMS keeps records for, it takes home about ₹2.40 a year.</div>
+        </div>
+        <p>The fee is <b>invisible to the investor</b> — the AMC pays it out of its own expense ratio. That is what makes it sticky, and what caps it.</p>
+        <p><b>The AMC is the customer, not the investor.</b> CAMS is hired to run the register: it opens accounts, processes the purchase, the redemption, the switch and the SIP debit, computes distributor brokerage, answers the phone at 285 service centres, and files what the regulator asks for.</p>
+        <div class="twostat">
+          <div><b>285</b><span>Service centres</span></div>
+          <div><b>23+ yrs</b><span>Avg. relationship,<br>10 largest clients</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">The ₹2.40 figure is mutual-fund revenue over period-end AUM serviced. The 2.88 bps below is the <em>blended</em> yield — total revenue including non-MF, over <em>average</em> AUM — which is the basis the model uses. Same business, two denominators.</p>
+  </div>
+
   <div class="stats">
     <div class="stat"><div class="v">₹55.1 L Cr</div><div class="l">MF AUM serviced</div></div>
     <div class="stat hl"><div class="v">~68%</div><div class="l">MF RTA market share</div></div>
@@ -229,7 +297,7 @@
           <div class="drv">
             <div class="drvlab"><span>Non-MF revenue growth p.a.</span><b id="v-nmf">18.0%</b></div>
             <input type="range" id="s-nmf" min="0" max="40" value="18" step="1">
-            <div class="drvhint">Payments, KRA, Alternatives, CAMSRep and Think360 — ₹220 Cr in FY26 (14.5% of revenue), with no AUM-yield exposure.</div>
+            <div class="drvhint">Payments, KRA, Alternatives, CAMSRep and Think360 — ₹212 Cr in FY26 (14% of revenue), with no AUM-yield exposure.</div>
           </div>
         </div>
 
@@ -290,7 +358,7 @@
         <div class="rh2">Risk</div><div class="rh2">Mitigant &amp; evidence</div><div class="rh2">Impact on target</div>
 
         <div class="rn">Revenue-yield compression</div>
-        <div class="rm">Yield has fallen ~0.065 bps/yr (2.88 → 2.75 across FY26–FY28E) — gradual repricing, not a cliff. Non-MF revenue (14.5% of the total) carries no yield exposure and grows faster.</div>
+        <div class="rm">Yield has fallen ~0.065 bps/yr (2.88 → 2.75 across FY26–FY28E) — gradual repricing, not a cliff. Non-MF revenue (14% of the total) carries no yield exposure and grows faster.</div>
         <div class="rq" id="r-yield">—</div>
 
         <div class="rn">AUM is market-linked</div>
@@ -338,8 +406,8 @@
 const CMP = 760, EPS26 = 18.90, SHARES = 24.80, REV26 = 1516;
 const IND26 = 77.41;      // industry average AAUM FY26, ₹ lakh crore (derived: serviced 52.64 ÷ 68% share)
 const SHARE26 = 0.68;     // CAMS MF RTA share of industry AAUM
-const NONMF26 = 220;      // ₹ Cr, non-MF revenue FY26 (14.5% of ₹1,516 Cr, per Q3 FY26 disclosed mix)
-const MFY26 = 2.4621;     // MF-only revenue yield, bps — calibrated so MF + non-MF = ₹1,516 Cr actual
+const NONMF26 = 212;      // ₹ Cr, non-MF revenue FY26 (14% of ₹1,516 Cr, per FY26 revenue-by-fee-type split 74/12/14)
+const MFY26 = 2.4773;     // MF-only revenue yield, bps — calibrated so MF + non-MF = ₹1,516 Cr actual
 const SHARE_DRIFT = 0.00; // pp per year, held flat
 const YLD_DRIFT = -0.060; // bps per year, vs observed ≈ −0.065
 const EXIT_PE = 36;       // exit multiple on FY29E EPS (5-yr fwd band: −1SD 29.7 / mean 38.2 / +1SD 46.7)
@@ -352,7 +420,7 @@ const HIST = {
   rev:    [972, 1136, 1422, 1516],
   ebitda: [421,  505,  652,  681],
   pat:    [285,  351,  465,  470],
-  nonmf:  [102,  136,  192,  220]   // FY23–25 split estimated; FY26 per disclosed mix
+  nonmf:  [ 97,  131,  185,  212]   // FY23–25 split estimated; FY26 per disclosed 74/12/14 split
 };
 
 const HOUSE = { aum:15.0, nmf:18, mgn:47.0, pay:45 };
