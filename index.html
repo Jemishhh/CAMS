@@ -120,7 +120,6 @@
   .arclab{position:absolute;transform:translate(-50%,-50%);font-size:9.5px;color:var(--navy);background:#fff;border:1px solid var(--blue-lt);padding:2px 7px;border-radius:9px;white-space:nowrap;font-weight:bold}
   @media(max-width:760px){.fwn{font-size:9px;padding:6px 5px}.fwn small{display:none}.arclab{display:none}.fwhub .h1{font-size:13px}.fwhub .h2{display:none}}
 
-  /* ---- Revenue by type of fee ---- */
   .feegrid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
   @media(max-width:980px){.feegrid{grid-template-columns:1fr}}
   .feebar{display:flex;height:52px;border-radius:5px;overflow:hidden;margin-bottom:12px}
@@ -189,7 +188,6 @@
 
 <div class="wrap">
 
-<!-- ============ 01 COMPANY ============ -->
 <section class="sec" id="company">
   <div class="sec-head"><span class="sec-num">01</span><h2>The Company</h2><span class="lens">business model · moat · optionality</span></div>
 
@@ -234,35 +232,16 @@
           <div style="flex:0 0 14%;background:var(--orange);color:var(--navy-dk)">14%</div>
         </div>
         <div class="feelist">
-          <div class="feerow">
-            <span class="swatch" style="background:var(--navy)"></span>
-            <div><div class="fn">Mutual fund, asset-based</div><div class="fd">A rate on assets under service. Grows with markets and with net inflows — and falls with both.</div></div>
-            <span class="fp">74%</span>
-          </div>
-          <div class="feerow">
-            <span class="swatch" style="background:var(--blue)"></span>
-            <div><div class="fn">Mutual fund, non-asset-based</div><div class="fd">Per-transaction and fixed fees. Tracks activity, not asset values.</div></div>
-            <span class="fp">12%</span>
-          </div>
-          <div class="feerow">
-            <span class="swatch" style="background:var(--orange)"></span>
-            <div><div class="fn">Everything that is not a mutual fund</div><div class="fd">Insurance repository, payments, KYC, account aggregation, NPS, alternatives, analytics.</div></div>
-            <span class="fp">14%</span>
-          </div>
+          <div class="feerow"><span class="swatch" style="background:var(--navy)"></span><div><div class="fn">Mutual fund, asset-based</div><div class="fd">A rate on assets under service. Grows with markets and with net inflows — and falls with both.</div></div><span class="fp">74%</span></div>
+          <div class="feerow"><span class="swatch" style="background:var(--blue)"></span><div><div class="fn">Mutual fund, non-asset-based</div><div class="fd">Per-transaction and fixed fees. Tracks activity, not asset values.</div></div><span class="fp">12%</span></div>
+          <div class="feerow"><span class="swatch" style="background:var(--orange)"></span><div><div class="fn">Everything that is not a mutual fund</div><div class="fd">Insurance repository, payments, KYC, account aggregation, NPS, alternatives, analytics.</div></div><span class="fp">14%</span></div>
         </div>
       </div>
-
       <div class="feenote">
-        <div class="bigstat">
-          <div class="bv">₹2.40</div>
-          <div class="bl">Of every <b style="color:#fff">₹10,000</b> of mutual fund assets CAMS keeps records for, it takes home about ₹2.40 a year.</div>
-        </div>
+        <div class="bigstat"><div class="bv">₹2.40</div><div class="bl">Of every <b style="color:#fff">₹10,000</b> of mutual fund assets CAMS keeps records for, it takes home about ₹2.40 a year.</div></div>
         <p>The fee is <b>invisible to the investor</b> — the AMC pays it out of its own expense ratio. That is what makes it sticky, and what caps it.</p>
         <p><b>The AMC is the customer, not the investor.</b> CAMS is hired to run the register: it opens accounts, processes the purchase, the redemption, the switch and the SIP debit, computes distributor brokerage, answers the phone at 285 service centres, and files what the regulator asks for.</p>
-        <div class="twostat">
-          <div><b>285</b><span>Service centres</span></div>
-          <div><b>23+ yrs</b><span>Avg. relationship,<br>10 largest clients</span></div>
-        </div>
+        <div class="twostat"><div><b>285</b><span>Service centres</span></div><div><b>23+ yrs</b><span>Avg. relationship,<br>10 largest clients</span></div></div>
       </div>
     </div>
     <p class="note">The ₹2.40 figure is mutual-fund revenue over period-end AUM serviced. The 2.88 bps below is the <em>blended</em> yield — total revenue including non-MF, over <em>average</em> AUM — which is the basis the model uses. Same business, two denominators.</p>
@@ -279,7 +258,6 @@
   <p class="note" style="margin-bottom:0">Operating metrics as at Q4 FY26 (CAMS investor presentation). Revenue yield is FY26 total revenue ÷ average AUM serviced; the ₹55.1 L Cr figure above is period-end AUM, while the model below runs on <em>average</em> AUM (₹52.6 L Cr FY26) to match how the yield is calculated.</p>
 </section>
 
-<!-- ============ 02 DYNAMIC MODEL ============ -->
 <section class="sec" id="model">
   <div class="sec-head"><span class="sec-num">02</span><h2>The Dynamic Model</h2><span class="lens">every assumption drives the share price</span></div>
 
@@ -287,107 +265,49 @@
     <div>
       <div class="card">
         <h3>Assumptions</h3>
-
         <div class="drvgroup"><div class="gt">Growth</div>
-          <div class="drv">
-            <div class="drvlab"><span>Industry AAUM growth p.a.</span><b id="v-aum">15.0%</b></div>
-            <input type="range" id="s-aum" min="0" max="26" value="15" step="0.5">
-            <div class="drvhint">Sell-side models 13.7% (FY27E) and 16.5% (FY28E). 5-yr trailing industry AUM CAGR was ~24%.</div>
-          </div>
-          <div class="drv">
-            <div class="drvlab"><span>Non-MF revenue growth p.a.</span><b id="v-nmf">18.0%</b></div>
-            <input type="range" id="s-nmf" min="0" max="40" value="18" step="1">
-            <div class="drvhint">Payments, KRA, Alternatives, CAMSRep and Think360 — ₹212 Cr in FY26 (14% of revenue), with no AUM-yield exposure.</div>
-          </div>
+          <div class="drv"><div class="drvlab"><span>Industry AAUM growth p.a.</span><b id="v-aum">19.5%</b></div><input type="range" id="s-aum" min="0" max="26" value="19.5" step="0.5"><div class="drvhint">Sell-side models 13.7% (FY27E) and 16.5% (FY28E). 5-yr trailing industry AUM CAGR was ~24%.</div></div>
+          <div class="drv"><div class="drvlab"><span>Non-MF revenue growth p.a.</span><b id="v-nmf">19%</b></div><input type="range" id="s-nmf" min="0" max="40" value="19" step="1"><div class="drvhint">Payments, KRA, Alternatives, CAMSRep and Think360 — ₹212 Cr in FY26 (14% of revenue), with no AUM-yield exposure.</div></div>
         </div>
-
         <div class="drvgroup"><div class="gt">Profitability &amp; exit</div>
-          <div class="drv">
-            <div class="drvlab"><span>FY29E EBITDA margin</span><b id="v-mgn">47.0%</b></div>
-            <input type="range" id="s-mgn" min="36" max="54" value="47" step="0.5">
-            <div class="drvhint">FY26 actual 44.9%, straight-lined to your exit margin. PAT margin = EBITDA margin − 13.9pp (observed gap has ranged 13.1–14.0pp across FY23–FY28E).</div>
-          </div>
-          <div class="drv">
-            <div class="drvlab"><span>Dividend payout ratio</span><b id="v-pay">45.0%</b></div>
-            <input type="range" id="s-pay" min="0" max="90" value="45" step="1">
-            <div class="drvhint">FY26 actual payout was 66% (DPS ₹12.5). Defaults to the conservative 45% sell-side forward assumption.</div>
-          </div>
+          <div class="drv"><div class="drvlab"><span>FY29E EBITDA margin</span><b id="v-mgn">45.0%</b></div><input type="range" id="s-mgn" min="36" max="54" value="45" step="0.5"><div class="drvhint">FY26 actual 44.9%, straight-lined to your exit margin. PAT margin = EBITDA margin − 13.9pp (observed gap has ranged 13.1–14.0pp across FY23–FY28E).</div></div>
+          <div class="drv"><div class="drvlab"><span>Dividend payout ratio</span><b id="v-pay">40%</b></div><input type="range" id="s-pay" min="0" max="90" value="40" step="1"><div class="drvhint">FY26 actual payout was 66% (DPS ₹12.5). Defaults to the conservative 40% base assumption.</div></div>
         </div>
-
         <div class="badge" id="b-implied"></div>
         <div class="fixed">Held constant across the model: <b>exit P/E 36.0x</b> on FY29E EPS — a deliberate de-rate from today's 40.2x trailing, and below the 5-yr forward mean of 38.2x (band: −1SD 29.7x · mean 38.2x · +1SD 46.7x). Also fixed: <b>MF RTA market share 68.0%</b> (flat) and <b>MF revenue yield −0.060 bps/yr</b> (observed run-rate ≈ −0.065 bps/yr across FY26–FY28E). All three are shocked in the risk table below; the multiple is flexed across the sensitivity grid.</div>
-        <button class="reset" id="reset">↺ Reset assumptions to house case</button>
+        <button class="reset" id="reset">↺ Reset assumptions to base case</button>
       </div>
     </div>
 
     <div>
-      <div class="chartcard">
-        <h4>Revenue build (₹ Cr)</h4>
-        <div class="cbox tall"><canvas id="cBuild"></canvas></div>
-        <p class="note">FY23A–FY26A actuals; FY27E–FY29E on your assumptions. MF revenue (navy) is <em>derived</em> from serviced AAUM × yield, not assumed; non-MF (amber) compounds on its own driver. <b>Note:</b> the MF / non-MF split for FY23A–FY25A is estimated — only the FY26 mix is disclosed by the company.</p>
-      </div>
-      <div class="chartcard">
-        <h4>Margin &amp; earnings trajectory</h4>
-        <div class="cbox sm"><canvas id="cMargin"></canvas></div>
-        <p class="note">Bars = PAT (₹ Cr, left axis). Lines = EBITDA and PAT margin (%, right axis). <b>The whole equity story is the gap between revenue growth and PAT growth</b> — if the margin lines are flat, operating leverage isn't there and the multiple isn't earned.</p>
-      </div>
+      <div class="chartcard"><h4>Revenue build (₹ Cr)</h4><div class="cbox tall"><canvas id="cBuild"></canvas></div><p class="note">FY23A–FY26A actuals; FY27E–FY29E on your assumptions. MF revenue (navy) is <em>derived</em> from serviced AAUM × yield, not assumed; non-MF (amber) compounds on its own driver. <b>Note:</b> the MF / non-MF split for FY23A–FY25A is estimated — only the FY26 mix is disclosed by the company.</p></div>
+      <div class="chartcard"><h4>Margin &amp; earnings trajectory</h4><div class="cbox sm"><canvas id="cMargin"></canvas></div><p class="note">Bars = PAT (₹ Cr, left axis). Lines = EBITDA and PAT margin (%, right axis). <b>The whole equity story is the gap between revenue growth and PAT growth</b> — if the margin lines are flat, operating leverage isn't there and the multiple isn't earned.</p></div>
     </div>
   </div>
 
-  <div class="chartcard">
-    <h4>Calculation engine — full build, year by year</h4>
-    <div style="overflow-x:auto"><table class="t" id="engine"></table></div>
-    <p class="note">Every line recomputes on each slider move. FY26A is the actual base year; FY27E–FY29E are model output.</p>
-  </div>
-
-  <div class="chartcard">
-    <h4>Sensitivity — 3-year IRR by EPS CAGR and exit P/E</h4>
-    <div style="overflow-x:auto" id="sensWrap"></div>
-    <p class="note" id="sensNote"></p>
-  </div>
+  <div class="chartcard"><h4>Calculation engine — full build, year by year</h4><div style="overflow-x:auto"><table class="t" id="engine"></table></div><p class="note">Every line recomputes on each slider move. FY26A is the actual base year; FY27E–FY29E are model output.</p></div>
+  <div class="chartcard"><h4>Sensitivity — 3-year IRR by EPS CAGR and exit P/E</h4><div style="overflow-x:auto" id="sensWrap"></div><p class="note" id="sensNote"></p></div>
 </section>
 
-<!-- ============ 03 RISKS & STRENGTHS ============ -->
 <section class="sec" id="risk">
   <div class="sec-head"><span class="sec-num">03</span><h2>Risks &amp; Strengths</h2><span class="lens">what could go wrong · why it compounds</span></div>
-
   <div class="g2">
-    <div class="card red">
-      <h3>Quantified risk → mitigant</h3>
+    <div class="card red"><h3>Quantified risk → mitigant</h3>
       <div class="risk">
         <div class="rh2">Risk</div><div class="rh2">Mitigant &amp; evidence</div><div class="rh2">Impact on target</div>
-
-        <div class="rn">Revenue-yield compression</div>
-        <div class="rm">Yield has fallen ~0.065 bps/yr (2.88 → 2.75 across FY26–FY28E) — gradual repricing, not a cliff. Non-MF revenue (14% of the total) carries no yield exposure and grows faster.</div>
-        <div class="rq" id="r-yield">—</div>
-
-        <div class="rn">AUM is market-linked</div>
-        <div class="rm">~43% of industry AUM arrives via SIP, which is contractual and keeps arriving through a drawdown. This is the risk with <em>no</em> operational mitigant — only the SIP mix softens it.</div>
-        <div class="rq" id="r-draw">—</div>
-
-        <div class="rn">Market-share loss to KFin</div>
-        <div class="rm">A two-player market. Switching provider means migrating the entire investor record book, reconciliation history and regulatory reporting under SEBI supervision — an operational risk for the AMC, not a procurement decision.</div>
-        <div class="rq" id="r-share">—</div>
-
-        <div class="rn">Multiple de-rating</div>
-        <div class="rm">The default 36x exit already de-rates from today's 40.2x trailing and sits below the 38.2x 5-yr mean. A fall to the −1SD level of 29.7x is the realistic bear.</div>
-        <div class="rq" id="r-pe">—</div>
-
-        <div class="rn">Client concentration</div>
-        <div class="rm">31 MF RTA clients, but assets skew heavily to the largest AMCs — the three biggest CAMS serves (SBI, ICICI Pru, HDFC) hold ~₹27.6 L Cr, roughly half the AUM it services.</div>
-        <div class="rq">~50% of serviced AUM<br>in top 3 clients</div>
+        <div class="rn">Revenue-yield compression</div><div class="rm">Yield has fallen ~0.065 bps/yr (2.88 → 2.75 across FY26–FY28E) — gradual repricing, not a cliff. Non-MF revenue (14% of the total) carries no yield exposure and grows faster.</div><div class="rq" id="r-yield">—</div>
+        <div class="rn">AUM is market-linked</div><div class="rm">~43% of industry AUM arrives via SIP, which is contractual and keeps arriving through a drawdown. This is the risk with <em>no</em> operational mitigant — only the SIP mix softens it.</div><div class="rq" id="r-draw">—</div>
+        <div class="rn">Market-share loss to KFin</div><div class="rm">A two-player market. Switching provider means migrating the entire investor record book, reconciliation history and regulatory reporting under SEBI supervision — an operational risk for the AMC, not a procurement decision.</div><div class="rq" id="r-share">—</div>
+        <div class="rn">Multiple de-rating</div><div class="rm">The default 36x exit already de-rates from today's 40.2x trailing and sits below the 38.2x 5-yr mean. A fall to the −1SD level of 29.7x is the realistic bear.</div><div class="rq" id="r-pe">—</div>
+        <div class="rn">Client concentration</div><div class="rm">31 MF RTA clients, but assets skew heavily to the largest AMCs — the three biggest CAMS serves (SBI, ICICI Pru, HDFC) hold ~₹27.6 L Cr, roughly half the AUM it services.</div><div class="rq">~50% of serviced AUM<br>in top 3 clients</div>
       </div>
       <p class="note"><b>Impact on target</b> = effect on the target price of the stated shock, holding every other assumption at your current setting: yield −0.06 bps/yr worse, a 30% equity-market drawdown in FY28, 0.75pp/yr of share loss, and a 6-turn de-rate respectively.</p>
     </div>
-
-    <div class="card">
-      <h3>Investment Strengths</h3>
-      <div class="strengths">
-        <div class="str"><div class="snum b">01</div><div class="tx"><b>Dominant and defensible core</b>~68% of industry AAUM and relationships with <em>6 of the top 10</em> AMCs by assets. Scale plus embedded record-keeping workflows make switching a multi-year operational risk for a client, not a procurement decision.</div></div>
-        <div class="str"><div class="snum o">02</div><div class="tx"><b>Multiple growth adjacencies</b>Alternatives, payments, KYC, insurance repository and analytics extend the addressable market beyond MF RTA — several of them created by regulation rather than competed for.</div></div>
-        <div class="str"><div class="snum g">03</div><div class="tx"><b>Asset-light &amp; cash-generative</b>44.9% EBITDA margin, ~36% ROE, a <em>debt-free</em> balance sheet and ₹444 Cr free cash flow. FY26 dividend payout was <em>66%</em>; the model conservatively assumes 45% going forward.</div></div>
-      </div>
-    </div>
+    <div class="card"><h3>Investment Strengths</h3><div class="strengths">
+      <div class="str"><div class="snum b">01</div><div class="tx"><b>Dominant and defensible core</b>~68% of industry AAUM and relationships with <em>6 of the top 10</em> AMCs by assets. Scale plus embedded record-keeping workflows make switching a multi-year operational risk for a client, not a procurement decision.</div></div>
+      <div class="str"><div class="snum o">02</div><div class="tx"><b>Multiple growth adjacencies</b>Alternatives, payments, KYC, insurance repository and analytics extend the addressable market beyond MF RTA — several of them created by regulation rather than competed for.</div></div>
+      <div class="str"><div class="snum g">03</div><div class="tx"><b>Asset-light &amp; cash-generative</b>44.9% EBITDA margin, ~36% ROE, a <em>debt-free</em> balance sheet and ₹444 Cr free cash flow. FY26 dividend payout was <em>66%</em>; the model conservatively assumes 40% going forward.</div></div>
+    </div></div>
   </div>
 </section>
 </div>
@@ -395,38 +315,36 @@
 <footer>
   <b>CAMS — Dynamic Valuation Model</b><br>
   <b>Base year (FY26A):</b> revenue ₹1,516 Cr · EBITDA margin 44.9% · PAT ₹470 Cr · EPS ₹18.90 · shares 24.80 Cr · CMP ₹760.
-  <b>Revenue identity:</b> MF revenue = average AUM serviced × revenue yield (bps); non-MF grows on its own rate. At default settings the model reproduces FY27E–FY29E revenue of ₹1,714 / 1,937 / 2,188 Cr.<br>
+  <b>Revenue identity:</b> MF revenue = average AUM serviced × revenue yield (bps); non-MF grows on its own rate. At default settings the model uses base assumptions of 19.5% industry AAUM growth, 19% non-MF growth, 45.0% FY29E EBITDA margin and 40% dividend payout.<br>
   Sources: CAMS Q4 FY'26 Investor Presentation (operating metrics, revenue mix) · AMFI &amp; Crisil Intelligence (industry AUM, folios, SIP) · Screener.in, 22-May-2026 (ROE, FCF, peer multiples) · third-party sell-side estimate dated 05-May-2026 (FY27–28E AAUM, revenue, margins, EPS, P/E band). Historical MF / non-MF revenue split for FY23A–FY25A is estimated.<br>
   Prepared July 2026. Educational scenario tool — not investment advice.
 </footer>
 
 <script>
 "use strict";
-/* ============================== CONSTANTS ============================== */
 const CMP = 760, EPS26 = 18.90, SHARES = 24.80, REV26 = 1516;
-const IND26 = 77.41;      // industry average AAUM FY26, ₹ lakh crore (derived: serviced 52.64 ÷ 68% share)
-const SHARE26 = 0.68;     // CAMS MF RTA share of industry AAUM
-const NONMF26 = 212;      // ₹ Cr, non-MF revenue FY26 (14% of ₹1,516 Cr, per FY26 revenue-by-fee-type split 74/12/14)
-const MFY26 = 2.4773;     // MF-only revenue yield, bps — calibrated so MF + non-MF = ₹1,516 Cr actual
-const SHARE_DRIFT = 0.00; // pp per year, held flat
-const YLD_DRIFT = -0.060; // bps per year, vs observed ≈ −0.065
-const EXIT_PE = 36;       // exit multiple on FY29E EPS (5-yr fwd band: −1SD 29.7 / mean 38.2 / +1SD 46.7)
-const GAP = 0.139;        // EBITDA margin − PAT margin (FY26: 44.9% − 31.0%)
+const IND26 = 77.41;
+const SHARE26 = 0.68;
+const NONMF26 = 212;
+const MFY26 = 2.4773;
+const SHARE_DRIFT = 0.00;
+const YLD_DRIFT = -0.060;
+const EXIT_PE = 36;
+const GAP = 0.139;
 const EBITDA_M26 = 0.449;
-const DRAWDOWN = 0.30;    // used only to quantify the market-drawdown risk row
+const DRAWDOWN = 0.30;
 
 const HIST = {
   yrs: ['FY23A','FY24A','FY25A','FY26A'],
   rev:    [972, 1136, 1422, 1516],
   ebitda: [421,  505,  652,  681],
   pat:    [285,  351,  465,  470],
-  nonmf:  [ 97,  131,  185,  212]   // FY23–25 split estimated; FY26 per disclosed 74/12/14 split
+  nonmf:  [ 97,  131,  185,  212]
 };
 
-const HOUSE = { aum:15.0, nmf:18, mgn:47.0, pay:45 };
+const HOUSE = { aum:19.5, nmf:19, mgn:45.0, pay:40 };
 const state = Object.assign({}, HOUSE);
 
-/* ============================== ENGINE ============================== */
 function solveIRR(dps, tp){
   const f = r => -CMP + dps[0]/(1+r) + dps[1]/Math.pow(1+r,2) + (dps[2]+tp)/Math.pow(1+r,3);
   let lo = -0.95, hi = 3.0;
@@ -436,8 +354,7 @@ function solveIRR(dps, tp){
 }
 
 function calc(s, stress){
-  const serviced=[], yld=[], mfRev=[], nonMf=[], rev=[], eps=[], dps=[],
-        pat=[], ebitda=[], patM=[], ebitdaM=[];
+  const serviced=[], yld=[], mfRev=[], nonMf=[], rev=[], eps=[], dps=[], pat=[], ebitda=[], patM=[], ebitdaM=[];
   const shareDrift = s.share === undefined ? SHARE_DRIFT : s.share;
   const yldDrift   = s.yld   === undefined ? YLD_DRIFT   : s.yld;
   for (let t=1;t<=3;t++){
@@ -446,7 +363,6 @@ function calc(s, stress){
     const sh = Math.max(0.05, Math.min(0.95, SHARE26 + (shareDrift/100) * t));
     const sv = ind * sh;
     serviced.push(sv);
-
     const y = Math.max(0.20, MFY26 + yldDrift * t);
     yld.push(y);
     const mf = sv * 100000 * (y/10000);
@@ -466,7 +382,6 @@ function calc(s, stress){
     revCagr: Math.pow(rev[2]/REV26, 1/3) - 1 };
 }
 
-/* ============================== FORMAT ============================== */
 const rs   = v => '₹' + Math.round(v).toLocaleString('en-IN');
 const pct  = (v,d=1) => (v>=0?'+':'') + (v*100).toFixed(d) + '%';
 const pct0 = (v,d=1) => (v*100).toFixed(d) + '%';
@@ -474,7 +389,6 @@ const f2   = v => v.toFixed(2);
 const f1   = v => v.toFixed(1);
 const cr   = v => Math.round(v).toLocaleString('en-IN');
 
-/* ============================== DOM ============================== */
 const el = id => document.getElementById(id);
 const KEYS = ['aum','nmf','mgn','pay'];
 const sl = {}, lb = {};
@@ -488,7 +402,6 @@ function kpi(id, txt, cls){
   if (changed){ e.classList.remove('pulse'); void e.offsetWidth; e.classList.add('pulse'); }
 }
 
-/* ============================== RENDER ============================== */
 function render(){
   KEYS.forEach(k => { state[k] = parseFloat(sl[k].value); });
   lb.aum.textContent = state.aum.toFixed(1) + '%';
@@ -497,8 +410,6 @@ function render(){
   lb.pay.textContent = state.pay.toFixed(0) + '%';
 
   const S = calc(state, false);
-
-  /* ---- KPIs ---- */
   const up = S.tp / CMP - 1;
   kpi('k-tp',  rs(S.tp),  up >= 0 ? '' : 'neg');
   kpi('k-up',  pct(up),   up >= 0 ? 'pos' : 'neg');
@@ -506,13 +417,11 @@ function render(){
   kpi('k-rev', pct0(S.revCagr));
   kpi('k-eps', pct0(S.epsCagr));
 
-  /* ---- implied readout ---- */
   el('b-implied').innerHTML =
     `<b>Your assumptions imply:</b> FY29E revenue <b>₹${cr(S.rev[2])} Cr</b> · FY29E EPS <b>₹${f2(S.eps[2])}</b> · `
     + `non-MF rises to <b>${pct0(S.nonMf[2]/S.rev[2])}</b> of revenue · `
     + `AUM serviced <b>₹${f1(S.serviced[2])} L Cr</b> · yield <b>${f2(S.yld[2])} bps</b>`;
 
-  /* ---- Revenue build chart ---- */
   const yrs = HIST.yrs.concat(['FY27E','FY28E','FY29E']);
   const mfSeries = HIST.rev.map((r,i) => r - HIST.nonmf[i]).concat(S.mfRev);
   const nmSeries = HIST.nonmf.concat(S.nonMf);
@@ -525,62 +434,43 @@ function render(){
       ]},
       options:{ responsive:true, maintainAspectRatio:false, animation:{duration:300},
         plugins:{ legend:{position:'bottom',labels:{boxWidth:11,font:{size:10.5}}},
-          tooltip:{callbacks:{
-            label: c => c.dataset.label + ': ₹' + cr(c.raw) + ' Cr',
-            footer: it => 'Total: ₹' + cr(it.reduce((s,i)=>s+i.raw,0)) + ' Cr' }} },
-        scales:{ x:{stacked:true,grid:{display:false}},
-                 y:{stacked:true,beginAtZero:true,title:{display:true,text:'₹ Cr',font:{size:10}},grid:{color:'#E4E8EE'}} } }
+          tooltip:{callbacks:{ label: c => c.dataset.label + ': ₹' + cr(c.raw) + ' Cr', footer: it => 'Total: ₹' + cr(it.reduce((s,i)=>s+i.raw,0)) + ' Cr' }} },
+        scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,beginAtZero:true,title:{display:true,text:'₹ Cr',font:{size:10}},grid:{color:'#E4E8EE'}} } }
     });
-  } else {
-    chBuild.data.datasets[0].data = mfSeries;
-    chBuild.data.datasets[1].data = nmSeries;
-    chBuild.update();
-  }
+  } else { chBuild.data.datasets[0].data = mfSeries; chBuild.data.datasets[1].data = nmSeries; chBuild.update(); }
 
-  /* ---- Margin chart ---- */
   const patSeries  = HIST.pat.concat(S.pat);
   const ebmSeries  = HIST.ebitda.map((e,i)=>e/HIST.rev[i]*100).concat(S.ebitdaM.map(x=>x*100));
   const patmSeries = HIST.pat.map((p,i)=>p/HIST.rev[i]*100).concat(S.patM.map(x=>x*100));
   if (!chMargin){
     chMargin = new Chart(el('cMargin'), {
       data:{ labels:yrs, datasets:[
-        // Chart.js draws sorted metasets in reverse, so a LOWER `order` renders on top.
-        // Bars get the highest order so both margin lines sit in front of them.
         { type:'bar', label:'PAT (₹ Cr)', data:patSeries, backgroundColor:'#B9C9E8', borderRadius:3, yAxisID:'y', order:3 },
         { type:'line', label:'EBITDA margin %', data:ebmSeries, borderColor:'#F6B343', backgroundColor:'#fff', tension:.3, yAxisID:'y1', pointRadius:3, pointBorderWidth:2, pointBackgroundColor:'#fff', borderWidth:3, order:1 },
         { type:'line', label:'PAT margin %', data:patmSeries, borderColor:'#00327B', backgroundColor:'#fff', tension:.3, yAxisID:'y1', pointRadius:3, pointBorderWidth:2, pointBackgroundColor:'#fff', borderWidth:3, order:2 }
       ]},
       options:{ responsive:true, maintainAspectRatio:false, animation:{duration:300},
         plugins:{legend:{position:'bottom',labels:{boxWidth:11,font:{size:10}}}},
-        scales:{ x:{grid:{display:false}},
-          y:{beginAtZero:true,position:'left',title:{display:true,text:'₹ Cr',font:{size:9}},grid:{color:'#E4E8EE'}},
-          y1:{position:'right',min:18,max:58,title:{display:true,text:'%',font:{size:9}},grid:{display:false},ticks:{callback:v=>v+'%'}} } }
+        scales:{ x:{grid:{display:false}}, y:{beginAtZero:true,position:'left',title:{display:true,text:'₹ Cr',font:{size:9}},grid:{color:'#E4E8EE'}}, y1:{position:'right',min:18,max:58,title:{display:true,text:'%',font:{size:9}},grid:{display:false},ticks:{callback:v=>v+'%'}} } }
     });
-  } else {
-    chMargin.data.datasets[0].data = patSeries;
-    chMargin.data.datasets[1].data = ebmSeries;
-    chMargin.data.datasets[2].data = patmSeries;
-    chMargin.update();
-  }
+  } else { chMargin.data.datasets[0].data = patSeries; chMargin.data.datasets[1].data = ebmSeries; chMargin.data.datasets[2].data = patmSeries; chMargin.update(); }
 
-  /* ---- Engine table: year by year ---- */
-  const A = { serviced: IND26*SHARE26, yld: 2.88, mf: REV26-NONMF26, nm: NONMF26, rev: REV26,
-              ebm: EBITDA_M26, ebitda: 681, patm: 0.310, pat: 470, eps: EPS26, dps: 12.50 };
+  const A = { serviced: IND26*SHARE26, yld: 2.88, mf: REV26-NONMF26, nm: NONMF26, rev: REV26, ebm: EBITDA_M26, ebitda: 681, patm: 0.310, pat: 470, eps: EPS26, dps: 12.50 };
   const rows = [
     ['__s__','Revenue build'],
     ['Average AUM serviced (₹ L Cr)', A.serviced, S.serviced[0], S.serviced[1], S.serviced[2], f1],
-    ['MF revenue yield (bps)',        A.yld,      S.yld[0],      S.yld[1],      S.yld[2],      f2],
-    ['MF revenue (₹ Cr)',             A.mf,       S.mfRev[0],    S.mfRev[1],    S.mfRev[2],    cr],
-    ['Non-MF revenue (₹ Cr)',         A.nm,       S.nonMf[0],    S.nonMf[1],    S.nonMf[2],    cr],
-    ['__t__','Total revenue (₹ Cr)',  A.rev,      S.rev[0],      S.rev[1],      S.rev[2],      cr],
+    ['MF revenue yield (bps)', A.yld, S.yld[0], S.yld[1], S.yld[2], f2],
+    ['MF revenue (₹ Cr)', A.mf, S.mfRev[0], S.mfRev[1], S.mfRev[2], cr],
+    ['Non-MF revenue (₹ Cr)', A.nm, S.nonMf[0], S.nonMf[1], S.nonMf[2], cr],
+    ['__t__','Total revenue (₹ Cr)', A.rev, S.rev[0], S.rev[1], S.rev[2], cr],
     ['__s__','Profitability'],
-    ['EBITDA margin',                 A.ebm,      S.ebitdaM[0],  S.ebitdaM[1],  S.ebitdaM[2],  v=>pct0(v)],
-    ['EBITDA (₹ Cr)',                 A.ebitda,   S.ebitda[0],   S.ebitda[1],   S.ebitda[2],   cr],
-    ['PAT margin',                    A.patm,     S.patM[0],     S.patM[1],     S.patM[2],     v=>pct0(v)],
-    ['__t__','PAT (₹ Cr)',            A.pat,      S.pat[0],      S.pat[1],      S.pat[2],      cr],
+    ['EBITDA margin', A.ebm, S.ebitdaM[0], S.ebitdaM[1], S.ebitdaM[2], v=>pct0(v)],
+    ['EBITDA (₹ Cr)', A.ebitda, S.ebitda[0], S.ebitda[1], S.ebitda[2], cr],
+    ['PAT margin', A.patm, S.patM[0], S.patM[1], S.patM[2], v=>pct0(v)],
+    ['__t__','PAT (₹ Cr)', A.pat, S.pat[0], S.pat[1], S.pat[2], cr],
     ['__s__','Per share'],
-    ['EPS (₹)',                       A.eps,      S.eps[0],      S.eps[1],      S.eps[2],      f2],
-    ['DPS (₹)',                       A.dps,      S.dps[0],      S.dps[1],      S.dps[2],      f2]
+    ['EPS (₹)', A.eps, S.eps[0], S.eps[1], S.eps[2], f2],
+    ['DPS (₹)', A.dps, S.dps[0], S.dps[1], S.dps[2], f2]
   ];
   let h = '<tr><th>Line item</th><th>FY26A</th><th>FY27E</th><th>FY28E</th><th>FY29E</th></tr>';
   rows.forEach(r => {
@@ -589,8 +479,7 @@ function render(){
     const label = tot ? r[1] : r[0];
     const [a,b,c,d] = tot ? [r[2],r[3],r[4],r[5]] : [r[1],r[2],r[3],r[4]];
     const f = tot ? r[6] : r[5];
-    h += `<tr${tot?' class="out"':''}><td>${label}</td>`
-       + `<td class="sub">${f(a)}</td><td>${f(b)}</td><td>${f(c)}</td><td>${f(d)}</td></tr>`;
+    h += `<tr${tot?' class="out"':''}><td>${label}</td>` + `<td class="sub">${f(a)}</td><td>${f(b)}</td><td>${f(c)}</td><td>${f(d)}</td></tr>`;
   });
   h += '<tr class="sec2"><td colspan="5">Outcome</td></tr>'
      + `<tr class="out"><td>Target price (FY29E EPS × ${f1(EXIT_PE)}x)</td><td colspan="4" class="big">${rs(S.tp)}</td></tr>`
@@ -600,10 +489,8 @@ function render(){
      + `<tr><td>Revenue CAGR FY26–29</td><td colspan="4">${pct0(S.revCagr)}</td></tr>`
      + `<tr><td>EPS CAGR FY26–29</td><td colspan="4">${pct0(S.epsCagr)}</td></tr>`;
   el('engine').innerHTML = h;
-
   renderSens(S);
 
-  /* ---- Risk impacts ---- */
   const shock = (mut, stress) => {
     const s2 = Object.assign({ share: SHARE_DRIFT, yld: YLD_DRIFT, pe: EXIT_PE }, state);
     if (mut) mut(s2);
@@ -615,7 +502,6 @@ function render(){
   el('r-pe').textContent    = pct(shock(o => { o.pe = EXIT_PE - 6; }));
 }
 
-/* ---------- Sensitivity ---------- */
 function heat(v, lo, hi){
   const t = Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
   let r,g,b;
@@ -645,24 +531,12 @@ function renderSens(S){
     + `<b>Read the diagonal:</b> a 4pp swing in EPS CAGR is worth roughly the same as 8 turns of multiple — growth matters more here than the exit-multiple debate.`;
 }
 
-/* ============================== WIRING ============================== */
 KEYS.forEach(k => sl[k].addEventListener('input', render));
-el('reset').addEventListener('click', () => {
-  Object.assign(state, HOUSE);
-  KEYS.forEach(k => { sl[k].value = state[k]; });
-  render();
-});
-
+el('reset').addEventListener('click', () => { Object.assign(state, HOUSE); KEYS.forEach(k => { sl[k].value = state[k]; }); render(); });
 const secs = [...document.querySelectorAll('section.sec')];
 const links = [...document.querySelectorAll('#nav a')];
-const spy = () => {
-  const y = window.scrollY + 170;
-  let cur = secs[0].id;
-  secs.forEach(s => { if (s.offsetTop <= y) cur = s.id; });
-  links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + cur));
-};
+const spy = () => { const y = window.scrollY + 170; let cur = secs[0].id; secs.forEach(s => { if (s.offsetTop <= y) cur = s.id; }); links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + cur)); };
 window.addEventListener('scroll', spy, { passive:true });
-
 KEYS.forEach(k => { sl[k].value = state[k]; });
 render();
 spy();
